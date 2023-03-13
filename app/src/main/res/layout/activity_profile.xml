@@ -149,6 +149,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
             android:padding="10dp"
+            android:inputType="numberSigned"
             android:text="60"
             android:textColor="@color/white"
             android:textSize="18dp"
