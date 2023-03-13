@@ -10,16 +10,26 @@
     android:paddingEnd="8dp"
     tools:context=".LoginActivity">
 
+    <View
+        android:id="@+id/line_list1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/tv_progress_distanceTraveled"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="16dp"
         android:text="Distance Traveled (Meters): "
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/line_list1" />
 
     <TextView
         android:id="@+id/tv_progress_met"
@@ -40,5 +50,16 @@
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@+id/tv_progress_distanceTraveled"
         app:layout_constraintTop_toBottomOf="@+id/tv_progress_met" />
+
+
+    <View
+        android:id="@+id/line_list2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_progress_caloriesBurned" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
