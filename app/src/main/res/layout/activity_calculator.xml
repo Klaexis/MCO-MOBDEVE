@@ -54,35 +54,26 @@
         app:layout_constraintTop_toBottomOf="@+id/calculatorTitle"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <TextView
-        android:id="@+id/tv_calculator_met"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="8dp"
-        android:text="MET: "
-        android:textColor="@color/white"
-        android:textSize="25dp"
-        app:layout_constraintEnd_toStartOf="@+id/ev_calculator_metInput"
-        app:layout_constraintHorizontal_bias="0.666"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ev_calculator_metInput" />
-
-    <EditText
-        android:id="@+id/ev_calculator_metInput"
-        android:layout_width="287dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="16dp"
-        android:background="#30ffffff"
-        android:maxLines="1"
-        android:padding="20dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et_calculator_metInput"
+        android:layout_width="357dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="16dp"
+        android:hint="@string/hint_activities"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_calculator_timeInput"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_calculator_timeInput">
+
+        <AutoCompleteTextView
+            android:id="@+id/actv_activitySelected"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#30ffffff"
+            android:inputType="none" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/tv_calculator_weight"
@@ -93,22 +84,22 @@
         android:text="Body Weight: "
         android:textColor="@color/white"
         android:textSize="25dp"
-        app:layout_constraintEnd_toStartOf="@+id/ev_calculator_weightInput"
-        app:layout_constraintTop_toTopOf="@+id/ev_calculator_weightInput" />
+        app:layout_constraintEnd_toStartOf="@+id/et_calculator_weightInput"
+        app:layout_constraintTop_toTopOf="@+id/et_calculator_weightInput" />
 
     <EditText
-        android:id="@+id/ev_calculator_weightInput"
+        android:id="@+id/et_calculator_weightInput"
         android:layout_width="193dp"
         android:layout_height="55dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
         android:background="#30ffffff"
         android:maxLines="1"
         android:padding="20dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ev_calculator_metInput"
+        app:layout_constraintTop_toBottomOf="@+id/et_calculator_metInput"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
@@ -120,14 +111,14 @@
         android:text="Calories Burned: "
         android:textColor="@color/white"
         android:textSize="25dp"
-        app:layout_constraintEnd_toStartOf="@+id/ev_calculator_caloriesOutput"
+        app:layout_constraintEnd_toStartOf="@+id/et_calculator_caloriesOutput"
         app:layout_constraintTop_toBottomOf="@+id/tv_calculator_weight" />
 
     <EditText
-        android:id="@+id/ev_calculator_caloriesOutput"
+        android:id="@+id/et_calculator_caloriesOutput"
         android:layout_width="167dp"
         android:layout_height="52dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:background="#30ffffff"
         android:maxLines="1"
@@ -135,7 +126,7 @@
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ev_calculator_weightInput"
+        app:layout_constraintTop_toBottomOf="@+id/et_calculator_weightInput"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <com.google.android.material.button.MaterialButton
@@ -148,6 +139,6 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ev_calculator_weightInput" />
+        app:layout_constraintTop_toBottomOf="@+id/et_calculator_weightInput" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

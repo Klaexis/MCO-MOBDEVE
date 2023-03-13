@@ -60,11 +60,12 @@
         app:layout_constraintTop_toBottomOf="@+id/et_signup_firstName"
         tools:layout_editor_absoluteX="8dp" />
 
+
     <EditText
         android:id="@+id/et_signup_weight"
-        android:layout_width="149dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="395dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="8dp"
         android:accessibilityLiveRegion="none"
         android:background="#30ffffff"
         android:breakStrategy="simple"
@@ -74,57 +75,15 @@
         android:padding="20dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_signup_lastName" />
-
-
-    <TextView
-        android:id="@+id/gender"
-        android:layout_width="80dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:accessibilityLiveRegion="none"
-        android:breakStrategy="simple"
-        android:hint="Gender"
-        android:maxLines="1"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        app:layout_constraintStart_toEndOf="@+id/et_signup_weight"
-        app:layout_constraintTop_toBottomOf="@+id/et_signup_lastName" />
-
-    <RadioButton
-        android:id="@+id/selected_male"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="6dp"
-        android:buttonTint="@color/white"
-        android:onClick="checkButton"
-        android:text="Male"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@+id/et_signup_weight"
-        app:layout_constraintTop_toBottomOf="@+id/gender" />
-
-    <RadioButton
-        android:id="@+id/selected_Female"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="6dp"
-        android:buttonTint="@color/white"
-        android:onClick="checkButton"
-        android:text="Female"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@+id/selected_male"
-        app:layout_constraintTop_toBottomOf="@+id/gender" />
 
     <EditText
         android:id="@+id/et_signup_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="84dp"
         android:accessibilityLiveRegion="none"
         android:background="#30ffffff"
         android:breakStrategy="simple"
