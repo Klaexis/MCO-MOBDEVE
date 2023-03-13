@@ -2,6 +2,6 @@
     <string name="app_name">MCO2: WalkieCalorie</string>
 
     <string name="radio_walking">Walking</string>
-    <string name="radio_running">Running</string>
+    <string name="radio_jogging">Jogging</string>
 
 </resources>

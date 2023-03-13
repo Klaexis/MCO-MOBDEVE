@@ -39,7 +39,8 @@ class SignUpActivity : AppCompatActivity() {
 //            var email: String = et_email.text.toString()
 //            var firstName: String  = et_firstName.text.toString()
 //            var lastName: String  = et_lastName.text.toString()
-//            var weight: Int = et_weight.
+//            var weightStr: String = et_weight.text.toString()
+//            var weight: Int = weightStr.toInt()
 //            var password : String = et_password.text.toString()
 
             var isTrue = true

@@ -89,12 +89,12 @@
             android:text="@string/radio_walking" />
 
         <RadioButton
-            android:id="@+id/radioRunning"
+            android:id="@+id/radioJogging"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:buttonTint="@color/white"
-            android:text="@string/radio_running" />
+            android:text="@string/radio_jogging" />
 
     </RadioGroup>
 
