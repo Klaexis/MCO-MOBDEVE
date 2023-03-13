@@ -2,8 +2,6 @@ package com.mobdeve.s11.group11.mco2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
 import android.widget.RadioGroup
 
 import com.mobdeve.s11.group11.mco2.databinding.ActivityCalculatorBinding

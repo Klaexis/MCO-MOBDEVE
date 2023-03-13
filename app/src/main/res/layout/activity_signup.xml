@@ -71,6 +71,7 @@
         android:breakStrategy="simple"
         android:drawableLeft="@drawable/baseline_accessibility_24"
         android:hint="Weight"
+        android:inputType="numberSigned"
         android:maxLines="1"
         android:padding="20dp"
         android:textColor="@color/white"
