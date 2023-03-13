@@ -36,6 +36,12 @@ class SignUpActivity : AppCompatActivity() {
 
         //SignUp Button set data of user and go to the Login Page and Activity
         viewBinding.signupBtn.setOnClickListener {
+//            var email: String = et_email.text.toString()
+//            var firstName: String  = et_firstName.text.toString()
+//            var lastName: String  = et_lastName.text.toString()
+//            var weight: Int = et_weight.
+//            var password : String = et_password.text.toString()
+
             var isTrue = true
 
             if(isEmpty(et_email) || isEmpty(et_firstName) || isEmpty(et_lastName) || isEmpty(et_weight) || isEmpty(et_password)){
