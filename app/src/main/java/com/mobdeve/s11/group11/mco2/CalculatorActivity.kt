@@ -14,5 +14,7 @@ class CalculatorActivity : AppCompatActivity() {
         setContentView(viewBinding.root)
 
         val radioActivityGroup = findViewById<RadioGroup>(R.id.radioActivity)
+
+
     }
 }

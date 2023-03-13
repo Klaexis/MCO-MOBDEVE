@@ -46,6 +46,7 @@
 
 
         <TextView
+            android:id="@+id/tv_profile_nameTitle"
             android:layout_width="128dp"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/baseline_person_outline_24"
@@ -55,6 +56,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tv_profile_firstName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
@@ -64,14 +66,13 @@
             android:textSize="18dp" />
 
         <TextView
+            android:id="@+id/tv_profile_lastName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:padding="10dp"
             android:text="Lim"
             android:textSize="18dp" />
-
-
     </LinearLayout>
 
     <View
@@ -96,6 +97,7 @@
 
 
         <TextView
+            android:id="@+id/tv_profile_emailTitle"
             android:layout_width="128dp"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/baseline_email_24"
@@ -105,6 +107,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tv_profile_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
@@ -112,8 +115,6 @@
             android:text="aleck@yahoo.com"
             android:textColor="@color/white"
             android:textSize="18dp" />
-
-
     </LinearLayout>
 
     <View
@@ -136,6 +137,7 @@
 
 
         <TextView
+            android:id="@+id/tv_profile_weightTitle"
             android:layout_width="128dp"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/baseline_accessibility_24"
@@ -145,6 +147,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/ev_profile_weight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
@@ -156,6 +159,7 @@
             tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
+            android:id="@+id/tv_profile_kg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="KG"

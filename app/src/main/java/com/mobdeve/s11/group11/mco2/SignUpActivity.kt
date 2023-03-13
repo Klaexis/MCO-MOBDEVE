@@ -57,6 +57,7 @@ class SignUpActivity : AppCompatActivity() {
             if(isTrue){
                 val signupIntent : Intent = Intent(this@SignUpActivity, LoginActivity::class.java)
                 startActivity(signupIntent)
+                finish()
             }
         }
 
@@ -64,6 +65,7 @@ class SignUpActivity : AppCompatActivity() {
         tv_login.setOnClickListener {
             val loginIntent : Intent = Intent(this@SignUpActivity, LoginActivity::class.java)
             startActivity(loginIntent)
+            finish()
         }
     }
 }
