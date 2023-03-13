@@ -11,7 +11,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/signInTitle"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
@@ -25,7 +25,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/et_login_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
@@ -38,11 +38,11 @@
         android:padding="20dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/textView1"
+        app:layout_constraintTop_toBottomOf="@+id/signInTitle"
         tools:layout_editor_absoluteX="8dp" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/et_login_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -53,7 +53,7 @@
         android:padding="20dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/et_login_email"
         tools:layout_editor_absoluteX="8dp" />
 
     <com.google.android.material.button.MaterialButton
@@ -64,13 +64,13 @@
         android:backgroundTint="@color/white"
         android:text="Login"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/textView1"
+        app:layout_constraintEnd_toEndOf="@+id/signInTitle"
         app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toStartOf="@+id/textView1"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintStart_toStartOf="@+id/signInTitle"
+        app:layout_constraintTop_toBottomOf="@+id/et_login_password" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/signup_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"

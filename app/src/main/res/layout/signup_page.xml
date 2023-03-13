@@ -12,7 +12,7 @@
 
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/signUpTitle"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginTop="4dp"
@@ -27,7 +27,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/firstName"
+        android:id="@+id/et_signup_firstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -40,11 +40,11 @@
         android:padding="20dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/textView1"
+        app:layout_constraintTop_toBottomOf="@+id/signUpTitle"
         tools:layout_editor_absoluteX="8dp" />
 
     <EditText
-        android:id="@+id/lastName"
+        android:id="@+id/et_signup_lastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -57,11 +57,11 @@
         android:padding="20dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/firstName"
+        app:layout_constraintTop_toBottomOf="@+id/et_signup_firstName"
         tools:layout_editor_absoluteX="8dp" />
 
     <EditText
-        android:id="@+id/weight"
+        android:id="@+id/et_signup_weight"
         android:layout_width="149dp"
         android:layout_height="64dp"
         android:layout_marginTop="24dp"
@@ -75,7 +75,7 @@
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lastName" />
+        app:layout_constraintTop_toBottomOf="@+id/et_signup_lastName" />
 
 
     <TextView
@@ -91,8 +91,8 @@
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintStart_toEndOf="@+id/weight"
-        app:layout_constraintTop_toBottomOf="@+id/lastName" />
+        app:layout_constraintStart_toEndOf="@+id/et_signup_weight"
+        app:layout_constraintTop_toBottomOf="@+id/et_signup_lastName" />
 
     <RadioButton
         android:id="@+id/selected_male"
@@ -104,7 +104,7 @@
         android:onClick="checkButton"
         android:text="Male"
         android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@+id/weight"
+        app:layout_constraintStart_toEndOf="@+id/et_signup_weight"
         app:layout_constraintTop_toBottomOf="@+id/gender" />
 
     <RadioButton
@@ -121,7 +121,7 @@
         app:layout_constraintTop_toBottomOf="@+id/gender" />
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/et_signup_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="108dp"
@@ -134,11 +134,11 @@
         android:padding="20dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/lastName"
+        app:layout_constraintTop_toBottomOf="@+id/et_signup_lastName"
         tools:layout_editor_absoluteX="8dp" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/et_signup_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -149,7 +149,7 @@
         android:padding="20dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/et_signup_email"
         tools:layout_editor_absoluteX="8dp" />
 
     <com.google.android.material.button.MaterialButton
@@ -160,13 +160,13 @@
         android:backgroundTint="@color/white"
         android:text="Register"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/textView1"
+        app:layout_constraintEnd_toEndOf="@+id/signUpTitle"
         app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toStartOf="@+id/textView1"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintStart_toStartOf="@+id/signUpTitle"
+        app:layout_constraintTop_toBottomOf="@+id/et_signup_password" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/login_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"

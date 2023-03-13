@@ -11,44 +11,34 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Time Elapsed: "
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@+id/textView1"
-        app:layout_constraintTop_toBottomOf="@+id/textView1" />
-
-    <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tv_progress_distanceTraveled"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
-        android:text="Distance Traveled: "
+        android:text="Distance Traveled (Meters): "
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tv_progress_met"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Calories (Per Minute): "
+        android:layout_marginTop="4dp"
+        android:text="Time Elapsed (Minutes): "
         android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@+id/textView1"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintStart_toStartOf="@+id/tv_progress_distanceTraveled"
+        app:layout_constraintTop_toBottomOf="@+id/tv_progress_distanceTraveled" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tv_progress_caloriesBurned"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
-        android:text="Calories Burned: "
+        android:text="Calories Burned (Per Minute): "
         android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@+id/textView1"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintStart_toStartOf="@+id/tv_progress_distanceTraveled"
+        app:layout_constraintTop_toBottomOf="@+id/tv_progress_met" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
