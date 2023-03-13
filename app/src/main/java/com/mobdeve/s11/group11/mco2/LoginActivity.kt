@@ -7,7 +7,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.mobdeve.s11.group11.mco2.databinding.ActivityMainBinding
+import com.mobdeve.s11.group11.mco2.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity(){
     companion object {
@@ -17,7 +17,7 @@ class LoginActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val viewBinding : ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
+        val viewBinding : ActivityLoginBinding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
         var et_email = findViewById<EditText>(R.id.et_login_email)
