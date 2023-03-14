@@ -94,7 +94,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:buttonTint="@color/white"
-            android:text="@string/radio_jogging" />
+            android:text="@string/radio_jogging"/>
 
     </RadioGroup>
 
@@ -102,8 +102,8 @@
         android:id="@+id/tv_calculator_weight"
         android:layout_width="186dp"
         android:layout_height="32dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="68dp"
         android:text="Body Weight: "
         android:textColor="@color/white"
         android:textSize="25dp"
