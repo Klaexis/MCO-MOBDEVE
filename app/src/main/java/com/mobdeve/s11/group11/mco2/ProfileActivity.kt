@@ -3,6 +3,7 @@ package com.mobdeve.s11.group11.mco2
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
 import com.mobdeve.s11.group11.mco2.databinding.ActivityProfileBinding
 
 class ProfileActivity : AppCompatActivity() {
@@ -11,6 +12,11 @@ class ProfileActivity : AppCompatActivity() {
 
         val viewBinding : ActivityProfileBinding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
+
+        viewBinding.UpdateWeightButton.setOnClickListener{
+            var et_weight = findViewById<EditText>(R.id.et_profile_weight)
+            var weight = et_weight.text.toString()
+        }
 
         viewBinding.historyBtn.setOnClickListener {
             val historyIntent : Intent = Intent(this@ProfileActivity, ProgressTrackerActivity::class.java)
