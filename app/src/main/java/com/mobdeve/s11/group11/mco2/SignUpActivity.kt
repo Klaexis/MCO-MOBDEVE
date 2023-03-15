@@ -3,6 +3,8 @@ package com.mobdeve.s11.group11.mco2
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.util.Patterns
 import android.widget.EditText
 import android.widget.TextView
@@ -63,6 +65,19 @@ class SignUpActivity : AppCompatActivity() {
 //                UserData.loadUser().add(user)
 
                 finish()
+            }
+        }
+
+        var isHidden = true
+        viewBinding.signupShowHideBtn.setOnClickListener{
+            isHidden = if(isHidden){
+                viewBinding.etSignupPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                viewBinding.signupShowHideBtn.setBackgroundResource(R.drawable.baseline_visibility_24)
+                false
+            } else {
+                viewBinding.etSignupPassword.transformationMethod = PasswordTransformationMethod.getInstance()
+                viewBinding.signupShowHideBtn.setBackgroundResource(R.drawable.baseline_visibility_off_24)
+                true
             }
         }
 

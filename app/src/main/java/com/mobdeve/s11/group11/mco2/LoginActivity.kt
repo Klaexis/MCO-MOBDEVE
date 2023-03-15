@@ -2,6 +2,8 @@ package com.mobdeve.s11.group11.mco2
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
@@ -49,6 +51,19 @@ class LoginActivity : AppCompatActivity(){
 
             if(!isTrue){
                 Toast.makeText(this@LoginActivity, "Incorrect email or password", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        var isHidden = true
+        viewBinding.loginShowHideBtn.setOnClickListener{
+            isHidden = if(isHidden){
+                viewBinding.etLoginPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                viewBinding.loginShowHideBtn.setBackgroundResource(R.drawable.baseline_visibility_24)
+                false
+            } else {
+                viewBinding.etLoginPassword.transformationMethod = PasswordTransformationMethod.getInstance()
+                viewBinding.loginShowHideBtn.setBackgroundResource(R.drawable.baseline_visibility_off_24)
+                true
             }
         }
 
