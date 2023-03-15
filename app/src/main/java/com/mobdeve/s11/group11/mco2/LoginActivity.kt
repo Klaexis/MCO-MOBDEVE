@@ -24,6 +24,7 @@ class LoginActivity : AppCompatActivity(){
         var et_password = findViewById<EditText>(R.id.et_login_password)
         var tv_signup = findViewById<TextView>(R.id.signup_link)
 
+        var isTrue = false
         //Login Button to go to the profile activity
         viewBinding.loginBtn.setOnClickListener {
             val email : String = et_email.text.toString()
@@ -36,14 +37,18 @@ class LoginActivity : AppCompatActivity(){
                     if (password == getUser.Password) {
                         val loginIntent: Intent = Intent(this@LoginActivity, ProfileActivity::class.java)
 
+                        isTrue = true
+
                         loginIntent.putExtra(EMAIL_KEY, email)
                         startActivity(loginIntent)
 
                         finish()
-                    } else {
-                        Toast.makeText(this@LoginActivity, "Incorrect email or password", Toast.LENGTH_SHORT).show()
                     }
                 }
+            }
+
+            if(!isTrue){
+                Toast.makeText(this@LoginActivity, "Incorrect email or password", Toast.LENGTH_SHORT).show()
             }
         }
 
