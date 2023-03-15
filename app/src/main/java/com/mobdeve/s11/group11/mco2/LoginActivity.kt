@@ -29,15 +29,32 @@ class LoginActivity : AppCompatActivity(){
             val email : String = et_email.text.toString()
             val password : String = et_password.text.toString()
 
-            if((email == "sample@gmail.com") && (password == "123")){
-                val loginIntent : Intent = Intent(this@LoginActivity, ProfileActivity::class.java)
-                startActivity(loginIntent).apply{
-                    loginIntent.putExtra(EMAIL_KEY, email)
+            for (i in 0 until UserData.loadUser().count()){
+                val getUser = UserData.loadUser().get(i)
+
+                if(email == getUser.Email) {
+                    if (password == getUser.Password) {
+                        val loginIntent: Intent = Intent(this@LoginActivity, ProfileActivity::class.java)
+
+                        loginIntent.putExtra(EMAIL_KEY, email)
+                        startActivity(loginIntent)
+
+                        finish()
+                    } else {
+                        Toast.makeText(this@LoginActivity, "Incorrect email or password", Toast.LENGTH_SHORT).show()
+                    }
                 }
-                finish()
-            } else {
-                Toast.makeText(this@LoginActivity, "Incorrect email or password", Toast.LENGTH_SHORT).show()
             }
+
+//            if((email == "sample@gmail.com") && (password == "123")){
+//                val loginIntent : Intent = Intent(this@LoginActivity, ProfileActivity::class.java)
+//                startActivity(loginIntent).apply{
+//                    loginIntent.putExtra(EMAIL_KEY, email)
+//                }
+//                finish()
+//            } else {
+//                Toast.makeText(this@LoginActivity, "Incorrect email or password", Toast.LENGTH_SHORT).show()
+//            }
         }
 
         //Sign up link to go to Sign Up page and activity

@@ -1,12 +1,11 @@
 package com.mobdeve.s11.group11.mco2
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.recyclerview.widget.RecyclerView
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.mobdeve.s11.group11.mco2.databinding.ActivityProfileBinding
 
 class ProfileActivity : AppCompatActivity() {
@@ -16,9 +15,30 @@ class ProfileActivity : AppCompatActivity() {
         val viewBinding : ActivityProfileBinding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        viewBinding.UpdateWeightButton.setOnClickListener{
-            var et_weight = findViewById<EditText>(R.id.et_profile_weight)
-            var weight = et_weight.text.toString()
+        val profileIntent = intent
+        val getEmail = profileIntent.getStringExtra(LoginActivity.EMAIL_KEY)
+
+        var i : Int = 0
+        UserData.loadUser().forEach {
+            if(UserData.loadUser().get(i).Email.equals(getEmail))
+            {
+                val getUser = UserData.loadUser().get(i)
+
+                viewBinding.tvProfileFirstName.text = getUser.firstName
+                viewBinding.tvProfileLastName.text = getUser.lastName
+                viewBinding.tvProfileEmail.text = getUser.Email
+
+                val weightEditable : TextView = findViewById(R.id.et_profile_weight)
+                weightEditable.text = getUser.weight.toString()
+
+                viewBinding.UpdateWeightButton.setOnClickListener{
+                    var et_weight = findViewById<EditText>(R.id.et_profile_weight)
+                    var weight = et_weight.text.toString()
+
+                    getUser.weight = weight.toInt()
+                }
+            }
+            i++
         }
 
         viewBinding.historyBtn.setOnClickListener {

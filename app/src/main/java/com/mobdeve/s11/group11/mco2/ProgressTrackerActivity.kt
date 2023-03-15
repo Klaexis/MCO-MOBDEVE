@@ -1,10 +1,8 @@
 package com.mobdeve.s11.group11.mco2
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mobdeve.s11.group11.mco2.databinding.ActivityProgressBinding
@@ -18,6 +16,20 @@ class ProgressTrackerActivity : AppCompatActivity() {
 
         val viewBinding : ActivityProgressBinding = ActivityProgressBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
+
+//        val progressIntent = intent
+//
+//        val activityMet: String = progressIntent.getStringExtra(MapsTrackerActivity.ACTIVITY_KEY).toString()
+//        val distance: Int = progressIntent.getIntExtra(MapsTrackerActivity.DISTANCE_KEY, 0)
+//        val time: Int = progressIntent.getIntExtra(MapsTrackerActivity.TIME_KEY, 0)
+//        val calBurn : Float = progressIntent.getFloatExtra(MapsTrackerActivity.CAL_BURNED_KEY, 0f)
+//        val email : String = progressIntent.getStringExtra(MapsTrackerActivity.EMAIL_KEY).toString()
+//        Toast.makeText(this@ProgressTrackerActivity, distance.toString(), Toast.LENGTH_SHORT).show()
+//
+//        val progress = Progress(activityMet, distance, time, calBurn, email)
+//        ProgressGenerator.loadProgress().add(progress)
+//
+//        this.myAdapter.notifyDataSetChanged()
 
         this.recyclerView = viewBinding.recyclerView
         this.myAdapter = MyAdapter(ProgressGenerator.loadProgress())
