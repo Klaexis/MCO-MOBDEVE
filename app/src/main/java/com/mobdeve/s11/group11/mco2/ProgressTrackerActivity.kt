@@ -1,7 +1,10 @@
 package com.mobdeve.s11.group11.mco2
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mobdeve.s11.group11.mco2.databinding.ActivityProgressBinding
@@ -9,6 +12,7 @@ import com.mobdeve.s11.group11.mco2.databinding.ActivityProgressBinding
 class ProgressTrackerActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var myAdapter: MyAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
