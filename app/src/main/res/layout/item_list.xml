@@ -2,8 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="@drawable/bg5"
     android:paddingStart="8dp"
     android:paddingTop="8dp"
@@ -23,11 +23,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_progress_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-
         android:layout_marginTop="16dp"
         android:text="Activity:"
         android:textColor="@color/white"
@@ -35,6 +34,7 @@
         app:layout_constraintTop_toBottomOf="@+id/line_list1" />
 
     <TextView
+        android:id="@+id/itemActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="134dp"
@@ -43,11 +43,11 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.049"
-        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/tv_progress_activity"
         app:layout_constraintTop_toBottomOf="@+id/line_list1" />
 
     <TextView
-        android:id="@+id/tv_text_caloriesBurned"
+        android:id="@+id/itemCalBurn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -59,7 +59,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tv_progress_caloriesBurned"
-        app:layout_constraintTop_toBottomOf="@+id/tv_text_timeElapsed"
+        app:layout_constraintTop_toBottomOf="@+id/itemTime"
         tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
@@ -74,7 +74,7 @@
         app:layout_constraintTop_toBottomOf="@+id/line_list1" />
 
     <TextView
-        android:id="@+id/tv_text_distancedTraveled"
+        android:id="@+id/itemDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -101,7 +101,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_progress_distanceTraveled" />
 
     <TextView
-        android:id="@+id/tv_text_timeElapsed"
+        android:id="@+id/itemTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="29dp"
@@ -113,7 +113,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toEndOf="@+id/tv_progress_time"
-        app:layout_constraintTop_toBottomOf="@+id/tv_text_distancedTraveled"
+        app:layout_constraintTop_toBottomOf="@+id/itemDistance"
         tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
@@ -128,7 +128,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_progress_time" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/loginBtn"
+        android:id="@+id/deleteBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"

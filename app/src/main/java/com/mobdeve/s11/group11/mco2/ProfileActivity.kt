@@ -21,19 +21,16 @@ class ProfileActivity : AppCompatActivity() {
         viewBinding.historyBtn.setOnClickListener {
             val historyIntent : Intent = Intent(this@ProfileActivity, ProgressTrackerActivity::class.java)
             startActivity(historyIntent)
-            finish()
         }
 
         viewBinding.startTrackingBtn.setOnClickListener {
             val startTrackingIntent: Intent = Intent(this@ProfileActivity, MapsTrackerActivity::class.java)
             startActivity(startTrackingIntent)
-            finish()
         }
 
         viewBinding.calculatorBtn.setOnClickListener{
             val calculatorIntent: Intent = Intent(this@ProfileActivity, CalculatorActivity::class.java)
             startActivity(calculatorIntent)
-            finish()
         }
     }
 }
