@@ -45,16 +45,6 @@ class LoginActivity : AppCompatActivity(){
                     }
                 }
             }
-
-//            if((email == "sample@gmail.com") && (password == "123")){
-//                val loginIntent : Intent = Intent(this@LoginActivity, ProfileActivity::class.java)
-//                startActivity(loginIntent).apply{
-//                    loginIntent.putExtra(EMAIL_KEY, email)
-//                }
-//                finish()
-//            } else {
-//                Toast.makeText(this@LoginActivity, "Incorrect email or password", Toast.LENGTH_SHORT).show()
-//            }
         }
 
         //Sign up link to go to Sign Up page and activity

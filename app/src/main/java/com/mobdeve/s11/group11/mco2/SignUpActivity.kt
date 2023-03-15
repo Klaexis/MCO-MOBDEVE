@@ -58,6 +58,10 @@ class SignUpActivity : AppCompatActivity() {
             if(isTrue){
                 val signupIntent : Intent = Intent(this@SignUpActivity, LoginActivity::class.java)
                 startActivity(signupIntent)
+
+//                val user = User(firstName, lastName, weight, email, password)
+//                UserData.loadUser().add(user)
+
                 finish()
             }
         }
