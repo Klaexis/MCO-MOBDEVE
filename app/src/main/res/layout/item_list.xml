@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg5"
+    android:background="@color/white"
     android:paddingStart="8dp"
     android:paddingTop="8dp"
     android:paddingEnd="8dp"
@@ -12,39 +12,29 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="19dp">
 
-    <View
-        android:id="@+id/line_list1"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/tv_progress_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:text="Activity:"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/line_list1" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/itemActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="134dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:text="Walking"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toEndOf="@+id/tv_progress_activity"
-        app:layout_constraintTop_toBottomOf="@+id/line_list1" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/itemCalBurn"
@@ -55,7 +45,7 @@
         android:clickable="true"
         android:focusable="true"
         android:text="156 calories"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tv_progress_caloriesBurned"
@@ -67,26 +57,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="13dp"
         android:text="Distance Traveled (Meters): "
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/line_list1" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_progress_activity" />
 
     <TextView
         android:id="@+id/itemDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="12dp"
         android:clickable="true"
         android:focusable="true"
         android:text="100 meters"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintHorizontal_bias="0.021"
         app:layout_constraintStart_toEndOf="@+id/tv_progress_distanceTraveled"
-        app:layout_constraintTop_toBottomOf="@+id/line_list1"
+        app:layout_constraintTop_toBottomOf="@+id/itemActivity"
         tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
@@ -96,7 +86,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
         android:text="Time Elapsed (Minutes): "
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_progress_distanceTraveled" />
 
@@ -109,7 +99,7 @@
         android:clickable="true"
         android:focusable="true"
         android:text="100 minutes"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toEndOf="@+id/tv_progress_time"
@@ -123,7 +113,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Calories Burned (Per Minute): "
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_progress_time" />
 
@@ -133,26 +123,23 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
         android:layout_marginBottom="8dp"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/purple_500"
         android:text="Delete"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/line_list2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_progress_caloriesBurned"
-        app:layout_constraintVertical_bias="0.042" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <View
         android:id="@+id/line_list2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="68dp"
-        android:background="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_progress_caloriesBurned" />
+        android:background="@color/purple_700"
+        app:layout_constraintTop_toBottomOf="@+id/deleteBtn"
+        tools:layout_editor_absoluteX="8dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
