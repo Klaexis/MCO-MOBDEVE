@@ -197,9 +197,9 @@
             android:layout_marginLeft="10dp"
             android:background="#30ffffff"
             android:maxLines="1"
-            android:textSize="30dp"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
+            android:textSize="30dp"
             tools:ignore="SpeakableTextPresentCheck"
             tools:layout_editor_absoluteX="247dp"
             tools:layout_editor_absoluteY="237dp" />
