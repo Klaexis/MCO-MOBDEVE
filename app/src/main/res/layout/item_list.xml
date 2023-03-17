@@ -20,15 +20,16 @@
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:weightSum="3"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/tv_progress_activity"
-            android:layout_width="195dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
-
+            android:layout_weight="3"
             android:text="Activity:"
             android:textColor="@color/black"
             tools:ignore="TouchTargetSizeCheck"
@@ -37,7 +38,7 @@
 
         <TextView
             android:id="@+id/itemActivity"
-            android:layout_width="195dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Walking"
             android:gravity="right"
@@ -52,6 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:weightSum="3"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,8 +61,9 @@
 
         <TextView
             android:id="@+id/tv_progress_distanceTraveled"
-            android:layout_width="195dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="3"
             android:text="Distance Traveled (Meters): "
             android:textColor="@color/black"
             tools:layout_editor_absoluteX="16dp"
@@ -68,7 +71,7 @@
 
         <TextView
             android:id="@+id/itemCalBurn"
-            android:layout_width="195dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
@@ -87,14 +90,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="33dp"
         android:gravity="center"
+        android:weightSum="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayoutItemList2">
 
         <TextView
             android:id="@+id/tv_progress_time"
-            android:layout_width="195dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="3"
             android:text="Time Elapsed (Minutes): "
             android:textColor="@color/black"
             tools:layout_editor_absoluteX="16dp"
@@ -102,7 +107,7 @@
 
         <TextView
             android:id="@+id/itemDistance"
-            android:layout_width="195dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
@@ -122,14 +127,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:gravity="center"
+        android:weightSum="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayoutItemList3">
 
         <TextView
             android:id="@+id/tv_progress_caloriesBurned"
-            android:layout_width="195dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="3"
             android:text="Calories Burned (Per Minute): "
             android:textColor="@color/black"
             tools:layout_editor_absoluteX="16dp"
@@ -137,7 +144,7 @@
 
         <TextView
             android:id="@+id/itemTime"
-            android:layout_width="195dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
