@@ -198,13 +198,12 @@
             android:background="#30ffffff"
             android:maxLines="1"
             android:gravity="left"
-            android:textSize="30dp"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
+            android:textSize="30dp"
             tools:ignore="SpeakableTextPresentCheck"
             tools:layout_editor_absoluteX="247dp"
             tools:layout_editor_absoluteY="237dp" />
-
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
