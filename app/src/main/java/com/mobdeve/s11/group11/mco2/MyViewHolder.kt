@@ -6,6 +6,7 @@ import com.mobdeve.s11.group11.mco2.databinding.ItemListBinding
 
 class MyViewHolder(private val viewBinding: ItemListBinding): RecyclerView.ViewHolder(viewBinding.root) {
     fun bindData(progress: Progress){
+        //Set viewBinding to item_list.xml and its corresponding views
         viewBinding.itemActivity.text = progress.activityMET
         viewBinding.itemDistance.text = progress.distanceTraveled.toString()
         viewBinding.itemTime.text = progress.timeElapsed.toString()

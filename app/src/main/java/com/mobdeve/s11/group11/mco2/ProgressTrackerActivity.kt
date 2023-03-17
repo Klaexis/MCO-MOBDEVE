@@ -14,9 +14,14 @@ class ProgressTrackerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        //Set viewBinding to activity_progress.xml
         val viewBinding : ActivityProgressBinding = ActivityProgressBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
+        /* [EXPERIMENT CODE FOR GETTING VALUE FROM MapsTrackerActivity.kt] P.S. DOES NOT WORK
+        [Hypothesis, notifyDataSetChanged() crashes the code due to the lateinit of myAdapter.
+        Also the onCreate may be the problem due to the fact that it creates/loads the same data
+        again and again when activity starts */
 //        val progressIntent = intent
 //
 //        val activityMet: String = progressIntent.getStringExtra(MapsTrackerActivity.ACTIVITY_KEY).toString()
@@ -31,6 +36,7 @@ class ProgressTrackerActivity : AppCompatActivity() {
 //
 //        this.myAdapter.notifyDataSetChanged()
 
+        //Set the recyclerView and myAdapter
         this.recyclerView = viewBinding.recyclerView
         this.myAdapter = MyAdapter(ProgressGenerator.loadProgress())
         this.recyclerView.adapter = myAdapter

@@ -19,11 +19,15 @@ class LoginActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        //Set viewBinding to activity_login.xml
         val viewBinding : ActivityLoginBinding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
+        //Get IDs of EditText in activity_login.xml
         var et_email = findViewById<EditText>(R.id.et_login_email)
         var et_password = findViewById<EditText>(R.id.et_login_password)
+
+        //Text signup link to go to signup activity
         var tv_signup = findViewById<TextView>(R.id.signup_link)
 
         var isTrue = false
@@ -32,16 +36,18 @@ class LoginActivity : AppCompatActivity(){
             val email : String = et_email.text.toString()
             val password : String = et_password.text.toString()
 
+            //Check every user
             for (i in 0 until UserData.loadUser().count()){
-                val getUser = UserData.loadUser().get(i)
+                val getUser = UserData.loadUser().get(i) //Get every user
 
-                if(email == getUser.Email) {
-                    if (password == getUser.Password) {
+                if(email == getUser.Email) { //Check email of every user if match
+                    if (password == getUser.Password) { //Check password of the user with the matched email if password matches
+                        //Send intent to ProfileActivity.kt
                         val loginIntent: Intent = Intent(this@LoginActivity, ProfileActivity::class.java)
 
                         isTrue = true
 
-                        loginIntent.putExtra(EMAIL_KEY, email)
+                        loginIntent.putExtra(EMAIL_KEY, email) //Send the email of user to ProfileActivity.kt
                         startActivity(loginIntent)
 
                         finish()
@@ -49,11 +55,12 @@ class LoginActivity : AppCompatActivity(){
                 }
             }
 
-            if(!isTrue){
+            if(!isTrue){ //If email/password is wrong then show toast
                 Toast.makeText(this@LoginActivity, "Incorrect email or password", Toast.LENGTH_SHORT).show()
             }
         }
 
+        //Image button to show/hide password if clicked
         var isHidden = true
         viewBinding.loginShowHideBtn.setOnClickListener{
             isHidden = if(isHidden){

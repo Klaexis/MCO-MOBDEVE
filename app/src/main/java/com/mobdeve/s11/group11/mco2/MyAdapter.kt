@@ -21,7 +21,7 @@ class MyAdapter(private val data: ArrayList<Progress>) : RecyclerView.Adapter<My
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bindData(data[position])
 
-        holder.setDeleteOnClickListener{
+        holder.setDeleteOnClickListener{ //Delete button in recycler view
             // Inform the user of the deleted element
             Toast.makeText(holder.itemView.context, "Record has been deleted", Toast.LENGTH_SHORT).show()
 
