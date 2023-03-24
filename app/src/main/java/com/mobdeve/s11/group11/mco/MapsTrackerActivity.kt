@@ -1,9 +1,9 @@
-package com.mobdeve.s11.group11.mco2
+package com.mobdeve.s11.group11.mco
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.mobdeve.s11.group11.mco2.databinding.ActivityGooglemapsBinding
+import com.mobdeve.s11.group11.mco.databinding.ActivityGooglemapsBinding
 
 class MapsTrackerActivity : AppCompatActivity() {
     companion object {

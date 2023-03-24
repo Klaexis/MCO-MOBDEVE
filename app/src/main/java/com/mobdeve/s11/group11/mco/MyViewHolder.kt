@@ -1,8 +1,8 @@
-package com.mobdeve.s11.group11.mco2
+package com.mobdeve.s11.group11.mco
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.mobdeve.s11.group11.mco2.databinding.ItemListBinding
+import com.mobdeve.s11.group11.mco.databinding.ItemListBinding
 
 class MyViewHolder(private val viewBinding: ItemListBinding): RecyclerView.ViewHolder(viewBinding.root) {
     fun bindData(progress: Progress){

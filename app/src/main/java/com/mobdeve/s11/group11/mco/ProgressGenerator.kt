@@ -1,4 +1,4 @@
-package com.mobdeve.s11.group11.mco2
+package com.mobdeve.s11.group11.mco
 
 class ProgressGenerator {
     companion object {
