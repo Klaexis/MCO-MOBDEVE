@@ -1,10 +1,10 @@
 package com.mobdeve.s11.group11.mco
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.mobdeve.s11.group11.mco.DataHelper.ProgressGenerator
 import com.mobdeve.s11.group11.mco.databinding.ActivityProgressBinding
 
 class ProgressTrackerActivity : AppCompatActivity() {

@@ -4,11 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
-import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.mobdeve.s11.group11.mco.DataHelper.*
 import com.mobdeve.s11.group11.mco.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity(){
