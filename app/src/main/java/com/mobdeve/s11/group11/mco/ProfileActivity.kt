@@ -23,7 +23,7 @@ class ProfileActivity : AppCompatActivity() {
         //Find the email of user
         var i : Int = 0
         UserData.loadUser().forEach {
-            if(UserData.loadUser().get(i).Email.equals(getEmail))
+            if(UserData.loadUser().get(i).email.equals(getEmail))
             {
                 //Get current user with the email used for login
                 val getUser = UserData.loadUser().get(i)
@@ -31,7 +31,7 @@ class ProfileActivity : AppCompatActivity() {
                 //Set TextViews to the User's credentials
                 viewBinding.tvProfileFirstName.text = getUser.firstName
                 viewBinding.tvProfileLastName.text = getUser.lastName
-                viewBinding.tvProfileEmail.text = getUser.Email
+                viewBinding.tvProfileEmail.text = getUser.email
 
                 //For editing current weight
                 val weightEditable : TextView = findViewById(R.id.et_profile_weight)

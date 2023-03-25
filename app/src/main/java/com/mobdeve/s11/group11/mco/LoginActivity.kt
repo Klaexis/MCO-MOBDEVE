@@ -40,8 +40,8 @@ class LoginActivity : AppCompatActivity(){
             for (i in 0 until UserData.loadUser().count()){
                 val getUser = UserData.loadUser().get(i) //Get every user
 
-                if(email == getUser.Email) { //Check email of every user if match
-                    if (password == getUser.Password) { //Check password of the user with the matched email if password matches
+                if(email == getUser.email) { //Check email of every user if match
+                    if (password == getUser.password) { //Check password of the user with the matched email if password matches
                         //Send intent to ProfileActivity.kt
                         val loginIntent: Intent = Intent(this@LoginActivity, ProfileActivity::class.java)
 
