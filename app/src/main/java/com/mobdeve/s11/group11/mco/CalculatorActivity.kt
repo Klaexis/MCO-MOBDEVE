@@ -50,7 +50,7 @@ class CalculatorActivity : AppCompatActivity() {
 
         var i : Int = 0
         UserData.loadUser().forEach {
-            if(UserData.loadUser().get(i).Email.equals(getEmail)) //Check email from data
+            if(UserData.loadUser().get(i).email.equals(getEmail)) //Check email from data
             {
                 val getUser = UserData.loadUser().get(i) //Get the user with the corresponding email
 
