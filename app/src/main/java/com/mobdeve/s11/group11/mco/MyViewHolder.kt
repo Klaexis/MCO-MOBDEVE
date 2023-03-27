@@ -12,6 +12,7 @@ class MyViewHolder(private val viewBinding: ItemListBinding): RecyclerView.ViewH
         viewBinding.itemDistance.text = progress.distanceTraveled.toString()
         viewBinding.itemTime.text = progress.timeElapsed.toString()
         viewBinding.itemCalBurn.text = progress.caloriesBurned.toString()
+        viewBinding.itemDate.text = progress.date
     }
     fun setDeleteOnClickListener(onClickListener: View.OnClickListener) {
         this.viewBinding.deleteBtn.setOnClickListener(onClickListener)

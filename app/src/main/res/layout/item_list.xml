@@ -88,7 +88,7 @@
         android:id="@+id/linearLayoutItemList3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="33dp"
+        android:layout_marginTop="24dp"
         android:gravity="center"
         android:weightSum="3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,8 +111,8 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
-            android:text="100 meters"
             android:gravity="right"
+            android:text="100 meters"
             android:textColor="@color/black"
             tools:ignore="TouchTargetSizeCheck"
             tools:layout_editor_absoluteX="203dp"
@@ -125,7 +125,7 @@
         android:id="@+id/linearLayoutItemList4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="24dp"
         android:gravity="center"
         android:weightSum="3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -148,8 +148,44 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
-            android:text="100 minutes"
             android:gravity="right"
+            android:text="100 minutes"
+            android:textColor="@color/black"
+            tools:ignore="TouchTargetSizeCheck"
+            tools:layout_editor_absoluteX="208dp"
+            tools:layout_editor_absoluteY="103dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutItemList5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:weightSum="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutItemList4">
+
+        <TextView
+            android:id="@+id/tv_progress_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="Date of the Activity: "
+            android:textColor="@color/black"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="75dp" />
+
+        <TextView
+            android:id="@+id/itemDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="right"
+            android:text="December 32, 2000"
             android:textColor="@color/black"
             tools:ignore="TouchTargetSizeCheck"
             tools:layout_editor_absoluteX="208dp"
@@ -161,7 +197,6 @@
         android:id="@+id/deleteBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:backgroundTint="@color/purple_500"
         android:text="Delete"
         android:textColor="@color/white"
@@ -169,7 +204,7 @@
         app:layout_constraintBottom_toTopOf="@+id/line_list2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutItemList4" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutItemList5" />
 
     <View
         android:id="@+id/line_list2"

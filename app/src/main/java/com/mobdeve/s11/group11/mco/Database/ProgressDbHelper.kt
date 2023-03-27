@@ -43,6 +43,7 @@ class ProgressDbHelper(context: Context?) :
         values.put(DbReferences.COLUMN_NAME_TIME_ELAPSED, progress.timeElapsed)
         values.put(DbReferences.COLUMN_NAME_CALORIES_BURNED, progress.caloriesBurned)
         values.put(DbReferences.COLUMN_NAME_EMAIL, progress.email)
+        values.put(DbReferences.COLUMN_NAME_DATE, progress.date)
 
         // Insert the new row
         // Inserting returns the primary key value of the new row, but we can ignore that if we don’t need it
@@ -73,7 +74,8 @@ class ProgressDbHelper(context: Context?) :
                 c.getInt(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_DISTANCE_TRAVELED)),
                 c.getInt(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_TIME_ELAPSED)),
                 c.getFloat(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_CALORIES_BURNED)),
-                c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_EMAIL))
+                c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_EMAIL)),
+                c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_DATE))
             ))
         }
 
@@ -94,6 +96,7 @@ class ProgressDbHelper(context: Context?) :
         const val COLUMN_NAME_TIME_ELAPSED = "time_elapsed"
         const val COLUMN_NAME_CALORIES_BURNED = "calories_burned"
         const val COLUMN_NAME_EMAIL = "email"
+        const val COLUMN_NAME_DATE = "date"
 
         const val CREATE_TABLE_STATEMENT =
             "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" +
@@ -102,7 +105,8 @@ class ProgressDbHelper(context: Context?) :
                     COLUMN_NAME_DISTANCE_TRAVELED + " TEXT, " +
                     COLUMN_NAME_TIME_ELAPSED + " TEXT, " +
                     COLUMN_NAME_CALORIES_BURNED + " TEXT, " +
-                    COLUMN_NAME_EMAIL + " TEXT)"
+                    COLUMN_NAME_EMAIL + " TEXT, " +
+                    COLUMN_NAME_DATE + " TEXT)"
 
         const val DROP_TABLE_STATEMENT = "DROP TABLE IF EXISTS " + TABLE_NAME
     }

@@ -24,7 +24,6 @@ class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.O
     private lateinit var lastLocation: Location
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
-
     companion object {
         //Set of KEYs for String name of the values that are about to be sent to ProgressTrackerActivity.kt
         const val ACTIVITY_KEY = "ACTIVITY_KEY"
