@@ -5,11 +5,13 @@ import android.text.TextUtils
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.mobdeve.s11.group11.mco.DataHelper.UserData
+import com.mobdeve.s11.group11.mco.Database.UserDbHelper
 import com.mobdeve.s11.group11.mco.databinding.ActivityCalculatorBinding
 
 
 class CalculatorActivity : AppCompatActivity() {
     private lateinit var calBurn: EditText
+    private lateinit var userDbHelper: UserDbHelper
 
     //Check if edit text is empty return true if it is otherwise false
     private fun isEmpty(text: EditText): Boolean {
@@ -48,18 +50,10 @@ class CalculatorActivity : AppCompatActivity() {
         val calculatorIntent = intent
         val getEmail = calculatorIntent.getStringExtra(LoginActivity.EMAIL_KEY) //Email from profile
 
-        var i : Int = 0
-        UserData.loadUser().forEach {
-            if(UserData.loadUser().get(i).email.equals(getEmail)) //Check email from data
-            {
-                val getUser = UserData.loadUser().get(i) //Get the user with the corresponding email
-
-                et_weight.setText(getUser.weight.toString()) //Set the text to the weight of the user
-                et_weight.isEnabled = false
-            }
-            i++
-        }
-
+        userDbHelper = UserDbHelper.getInstance(this@CalculatorActivity)!!
+        val getUser = userDbHelper.getUser(getEmail.toString())
+        et_weight.setText(getUser.weight.toString()) //Set the text to the weight of the user
+        et_weight.isEnabled = false
 
         viewBinding.calculateBtn.setOnClickListener{
             var isFilled = true

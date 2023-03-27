@@ -11,7 +11,6 @@ import com.mobdeve.s11.group11.mco.databinding.ActivityProfileBinding
 import java.util.concurrent.Executors
 
 class ProfileActivity : AppCompatActivity() {
-    private val executorService = Executors.newSingleThreadExecutor()
     private lateinit var userDbHelper: UserDbHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,12 +48,14 @@ class ProfileActivity : AppCompatActivity() {
         viewBinding.historyBtn.setOnClickListener {
             //When clicked go to the progress history activity
             val historyIntent : Intent = Intent(this@ProfileActivity, ProgressTrackerActivity::class.java)
+            historyIntent.putExtra(LoginActivity.EMAIL_KEY, getEmail)
             startActivity(historyIntent)
         }
 
         viewBinding.startTrackingBtn.setOnClickListener {
             //When clicked go to the tracking/googlemaps activity
             val startTrackingIntent: Intent = Intent(this@ProfileActivity, MapsTrackerActivity::class.java)
+            startTrackingIntent.putExtra(LoginActivity.EMAIL_KEY, getEmail)
             startActivity(startTrackingIntent)
         }
 
@@ -62,7 +63,6 @@ class ProfileActivity : AppCompatActivity() {
             //When clicked go to the calculator activity
             val calculatorIntent: Intent = Intent(this@ProfileActivity, CalculatorActivity::class.java)
             calculatorIntent.putExtra(LoginActivity.EMAIL_KEY, getEmail) //Send email to CalculatorActivity.kt
-
             startActivity(calculatorIntent)
         }
     }
