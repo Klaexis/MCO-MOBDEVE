@@ -156,6 +156,7 @@
             android:text="60"
             android:textColor="@color/white"
             android:textSize="18dp"
+            android:focusableInTouchMode="true"
             tools:ignore="TouchTargetSizeCheck" />
 
         <TextView

@@ -68,6 +68,18 @@ class UserDbHelper(context: Context?) :
     }
 
     @Synchronized
+    fun updateWeight(email: String, weight : Int){
+        val database = this.writableDatabase
+        val whereClause = "email=?"
+        val whereArgs = arrayOf<String>(email)
+
+        val values = ContentValues()
+        values.put(DbReferences.COLUMN_NAME_WEIGHT, weight)
+
+        database.update(DbReferences.TABLE_NAME, values, whereClause, whereArgs)
+    }
+
+    @Synchronized
     fun checkLogin(email: String, password: String) : Boolean{
         val database = this.writableDatabase
         val whereClause = "email=? AND password=?"

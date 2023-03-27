@@ -1,14 +1,16 @@
 package com.mobdeve.s11.group11.mco
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.mobdeve.s11.group11.mco.DataHelper.*
 import com.mobdeve.s11.group11.mco.Database.UserDbHelper
 import com.mobdeve.s11.group11.mco.databinding.ActivityProfileBinding
-import java.util.concurrent.Executors
+
 
 class ProfileActivity : AppCompatActivity() {
     private lateinit var userDbHelper: UserDbHelper
@@ -36,14 +38,14 @@ class ProfileActivity : AppCompatActivity() {
         val weightEditable : TextView = findViewById(R.id.et_profile_weight)
         weightEditable.text = getUser.weight.toString()
 
+        viewBinding.UpdateWeightButton.setOnClickListener{
+            //When update button is click set the new weight
+            var et_weight = findViewById<EditText>(R.id.et_profile_weight)
+            var weight = et_weight.text.toString()
 
-//        viewBinding.UpdateWeightButton.setOnClickListener{
-//            //When update button is click set the new weight
-//            var et_weight = findViewById<EditText>(R.id.et_profile_weight)
-//            var weight = et_weight.text.toString()
-//
-//            //getUser.weight = weight.toInt()
-//        }
+            userDbHelper.updateWeight(getEmail.toString(), weight.toInt())
+            hideKeyboard(this@ProfileActivity)
+        }
 
         viewBinding.historyBtn.setOnClickListener {
             //When clicked go to the progress history activity
@@ -64,6 +66,16 @@ class ProfileActivity : AppCompatActivity() {
             val calculatorIntent: Intent = Intent(this@ProfileActivity, CalculatorActivity::class.java)
             calculatorIntent.putExtra(LoginActivity.EMAIL_KEY, getEmail) //Send email to CalculatorActivity.kt
             startActivity(calculatorIntent)
+        }
+    }
+
+    fun hideKeyboard(activity: Activity) {
+        val imm: InputMethodManager =
+            activity.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        val view: View? = activity.currentFocus
+        if (view != null) {
+            view.clearFocus()
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0)
         }
     }
 }
