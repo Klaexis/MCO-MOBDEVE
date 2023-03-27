@@ -6,6 +6,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
+
 class UserDbHelper(context: Context?) :
     SQLiteOpenHelper(context, DbReferences.DATABASE_NAME, null, DbReferences.DATABASE_VERSION) {
 
@@ -30,6 +31,96 @@ class UserDbHelper(context: Context?) :
     override fun onUpgrade(sqLiteDatabase: SQLiteDatabase, i: Int, i1: Int) {
         sqLiteDatabase.execSQL(DbReferences.DROP_TABLE_STATEMENT)
         onCreate(sqLiteDatabase)
+    }
+
+    @Synchronized
+    fun getUser(email: String) : User{
+        val database = this.readableDatabase
+        val whereClause = "email=?"
+        val whereArgs = arrayOf<String>(email)
+
+        var user: User = User("", "", 0, "", "", 0)
+
+        //val userCursor : Cursor = database.rawQuery("SELECT * FROM " + DbReferences.TABLE_NAME + "WHERE email=" + email, null)
+        val userCursor : Cursor = database.query(
+            DbReferences.TABLE_NAME,
+            arrayOf("first_name", "last_name", "weight", "email", "password", "id"),
+            whereClause,
+            whereArgs,
+            null, null, null
+        )
+
+        if(userCursor.count > 0) {
+            userCursor.moveToFirst()
+            user = User(
+                userCursor.getString(userCursor.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_FIRST_NAME)),
+                userCursor.getString(userCursor.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_LAST_NAME)),
+                userCursor.getInt(userCursor.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_WEIGHT)),
+                userCursor.getString(userCursor.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_EMAIL)),
+                userCursor.getString(userCursor.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_PASSWORD)),
+                userCursor.getLong(userCursor.getColumnIndexOrThrow(DbReferences._ID))
+            )
+        }
+
+        userCursor.close()
+        database.close()
+        return user
+    }
+
+    @Synchronized
+    fun checkLogin(email: String, password: String) : Boolean{
+        val database = this.writableDatabase
+        val whereClause = "email=? AND password=?"
+        val whereArgs = arrayOf<String>(email, password)
+
+        val loginCursor : Cursor = database.query(
+            DbReferences.TABLE_NAME,
+            arrayOf("email", "password"),
+            whereClause,
+            whereArgs,
+            null, null, null
+        )
+
+        var isTrue = if(loginCursor.count == 1){
+            loginCursor.moveToFirst()
+            true
+        } else {
+            loginCursor.moveToFirst()
+            false
+        }
+
+        loginCursor.close()
+        database.close()
+
+        return isTrue
+    }
+
+    @Synchronized
+    fun checkEmailExist(email: String) : Boolean{
+        val database = this.writableDatabase
+        val whereClause = "email=?"
+        val whereArgs = arrayOf<String>(email)
+
+        val emailCursor : Cursor = database.query(
+            DbReferences.TABLE_NAME,
+            arrayOf("email"),
+            whereClause,
+            whereArgs,
+            null, null, null
+        )
+
+        var isExist = if(emailCursor.count > 0){
+            emailCursor.moveToFirst()
+            true
+        } else {
+            emailCursor.moveToFirst()
+            false
+        }
+        
+        emailCursor.close()
+        database.close()
+        
+        return isExist
     }
 
     @Synchronized
@@ -68,12 +159,12 @@ class UserDbHelper(context: Context?) :
 
         while(c.moveToNext()) {
             user.add(User(
-                c.getLong(c.getColumnIndexOrThrow(DbReferences._ID)),
                 c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_FIRST_NAME)),
                 c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_LAST_NAME)),
                 c.getInt(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_WEIGHT)),
                 c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_EMAIL)),
-                c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_PASSWORD))
+                c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_PASSWORD)),
+                c.getLong(c.getColumnIndexOrThrow(DbReferences._ID))
             ))
         }
 
@@ -101,7 +192,7 @@ class UserDbHelper(context: Context?) :
                     COLUMN_NAME_FIRST_NAME + " TEXT, " +
                     COLUMN_NAME_LAST_NAME + " TEXT, " +
                     COLUMN_NAME_WEIGHT + " TEXT, " +
-                    COLUMN_NAME_EMAIL + " TEXT, " +
+                    COLUMN_NAME_EMAIL + " TEXT UNIQUE, " +
                     COLUMN_NAME_PASSWORD + " TEXT)"
 
         const val DROP_TABLE_STATEMENT = "DROP TABLE IF EXISTS " + TABLE_NAME

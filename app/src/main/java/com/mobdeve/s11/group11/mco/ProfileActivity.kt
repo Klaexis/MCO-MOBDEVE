@@ -6,9 +6,13 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.mobdeve.s11.group11.mco.DataHelper.*
+import com.mobdeve.s11.group11.mco.Database.UserDbHelper
 import com.mobdeve.s11.group11.mco.databinding.ActivityProfileBinding
+import java.util.concurrent.Executors
 
 class ProfileActivity : AppCompatActivity() {
+    private val executorService = Executors.newSingleThreadExecutor()
+    private lateinit var userDbHelper: UserDbHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -21,32 +25,26 @@ class ProfileActivity : AppCompatActivity() {
         val getEmail = profileIntent.getStringExtra(LoginActivity.EMAIL_KEY)
 
         //Find the email of user
-        var i : Int = 0
-        UserData.loadUser().forEach {
-            if(UserData.loadUser().get(i).email.equals(getEmail))
-            {
-                //Get current user with the email used for login
-                val getUser = UserData.loadUser().get(i)
+        userDbHelper = UserDbHelper.getInstance(this@ProfileActivity)!!
+        val getUser = userDbHelper.getUser(getEmail.toString())
 
-                //Set TextViews to the User's credentials
-                viewBinding.tvProfileFirstName.text = getUser.firstName
-                viewBinding.tvProfileLastName.text = getUser.lastName
-                viewBinding.tvProfileEmail.text = getUser.email
+        //Set TextViews to the User's credentials
+        viewBinding.tvProfileFirstName.text = getUser.firstName
+        viewBinding.tvProfileLastName.text = getUser.lastName
+        viewBinding.tvProfileEmail.text = getUser.email
 
-                //For editing current weight
-                val weightEditable : TextView = findViewById(R.id.et_profile_weight)
-                weightEditable.text = getUser.weight.toString()
+        //For editing current weight
+        val weightEditable : TextView = findViewById(R.id.et_profile_weight)
+        weightEditable.text = getUser.weight.toString()
 
-                viewBinding.UpdateWeightButton.setOnClickListener{
-                    //When update button is click set the new weight
-                    var et_weight = findViewById<EditText>(R.id.et_profile_weight)
-                    var weight = et_weight.text.toString()
 
-                    getUser.weight = weight.toInt()
-                }
-            }
-            i++
-        }
+//        viewBinding.UpdateWeightButton.setOnClickListener{
+//            //When update button is click set the new weight
+//            var et_weight = findViewById<EditText>(R.id.et_profile_weight)
+//            var weight = et_weight.text.toString()
+//
+//            //getUser.weight = weight.toInt()
+//        }
 
         viewBinding.historyBtn.setOnClickListener {
             //When clicked go to the progress history activity

@@ -8,13 +8,15 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.mobdeve.s11.group11.mco.DataHelper.*
+import com.mobdeve.s11.group11.mco.Database.UserDbHelper
 import com.mobdeve.s11.group11.mco.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity(){
     companion object {
         const val EMAIL_KEY = "EMAIL_KEY"
     }
+
+    private lateinit var userDbHelper: UserDbHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,32 +32,21 @@ class LoginActivity : AppCompatActivity(){
         //Text signup link to go to signup activity
         var tv_signup = findViewById<TextView>(R.id.signup_link)
 
-        var isTrue = false
         //Login Button to go to the profile activity
         viewBinding.loginBtn.setOnClickListener {
             val email : String = et_email.text.toString()
             val password : String = et_password.text.toString()
 
-            //Check every user
-            for (i in 0 until UserData.loadUser().count()){
-                val getUser = UserData.loadUser().get(i) //Get every user
+            //Check user
+            userDbHelper = UserDbHelper.getInstance(this@LoginActivity)!!
+            if(userDbHelper.checkLogin(email, password)){
+                val loginIntent: Intent = Intent(this@LoginActivity, ProfileActivity::class.java)
 
-                if(email == getUser.email) { //Check email of every user if match
-                    if (password == getUser.password) { //Check password of the user with the matched email if password matches
-                        //Send intent to ProfileActivity.kt
-                        val loginIntent: Intent = Intent(this@LoginActivity, ProfileActivity::class.java)
+                loginIntent.putExtra(EMAIL_KEY, email) //Send the email of user to ProfileActivity.kt
+                startActivity(loginIntent)
 
-                        isTrue = true
-
-                        loginIntent.putExtra(EMAIL_KEY, email) //Send the email of user to ProfileActivity.kt
-                        startActivity(loginIntent)
-
-                        finish()
-                    }
-                }
-            }
-
-            if(!isTrue){ //If email/password is wrong then show toast
+                finish()
+            } else {
                 Toast.makeText(this@LoginActivity, "Incorrect email or password", Toast.LENGTH_SHORT).show()
             }
         }

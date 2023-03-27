@@ -10,10 +10,13 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.mobdeve.s11.group11.mco.Database.User
+import com.mobdeve.s11.group11.mco.Database.UserDbHelper
 import com.mobdeve.s11.group11.mco.databinding.ActivitySignupBinding
 
 
 class SignUpActivity : AppCompatActivity() {
+    private lateinit var userDbHelper: UserDbHelper
     //Check if any of the EditText is empty
     private fun isEmpty(text: EditText): Boolean {
         val str: CharSequence = text.text.toString()
@@ -24,6 +27,7 @@ class SignUpActivity : AppCompatActivity() {
         val email: CharSequence = text.text.toString()
         return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -43,13 +47,11 @@ class SignUpActivity : AppCompatActivity() {
 
         //SignUp Button set data of user and go to the Login Page and Activity
         viewBinding.signupBtn.setOnClickListener {
-            /* [SAMPLE DATA CREATION] [SET TO COMMENTS FOR FUTURE PURPOSES] */
-//            var email: String = et_email.text.toString()
-//            var firstName: String  = et_firstName.text.toString()
-//            var lastName: String  = et_lastName.text.toString()
-//            var weightStr: String = et_weight.text.toString()
-//            var weight: Int = weightStr.toInt()
-//            var password : String = et_password.text.toString()
+            var email: String = et_email.text.toString()
+            var firstName: String  = et_firstName.text.toString()
+            var lastName: String  = et_lastName.text.toString()
+            var weightStr: String = et_weight.text.toString()
+            var password : String = et_password.text.toString()
 
             var isTrue = true
 
@@ -59,6 +61,7 @@ class SignUpActivity : AppCompatActivity() {
                 isTrue = false
             }
 
+
             //If filled email is not a valid email do not create user and show Toast
             if(!isEmail(et_email)){
                 Toast.makeText(this@SignUpActivity, "Invalid Email", Toast.LENGTH_SHORT).show()
@@ -66,15 +69,21 @@ class SignUpActivity : AppCompatActivity() {
             }
 
             if(isTrue){
-                //Create user and go to Login activity
-                val signupIntent : Intent = Intent(this@SignUpActivity, LoginActivity::class.java)
-                startActivity(signupIntent)
+                userDbHelper = UserDbHelper.getInstance(this@SignUpActivity)!!
 
-                /* [SAMPLE DATA CREATION] [SET TO COMMENTS FOR FUTURE PURPOSES] */
-//                val user = User(firstName, lastName, weight, email, password)
-//                UserData.loadUser().add(user)
+                var emailExist = userDbHelper.checkEmailExist(email)
+                if(!emailExist){
+                    //Create user and go to Login activity
+                    val signupIntent : Intent = Intent(this@SignUpActivity, LoginActivity::class.java)
+                    startActivity(signupIntent)
 
-                finish()
+                    var weight: Int = weightStr.toInt()
+                    userDbHelper.addUser(User(firstName, lastName, weight, email, password, 0))
+
+                    finish()
+                } else {
+                    Toast.makeText(this@SignUpActivity, "Email Already Exists", Toast.LENGTH_SHORT).show()
+                }
             }
         }
 
