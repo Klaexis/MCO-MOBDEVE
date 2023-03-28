@@ -16,21 +16,17 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.mobdeve.s11.group11.mco.Database.ProgressDbHelper
+import com.mobdeve.s11.group11.mco.Database.UserDbHelper
 import com.mobdeve.s11.group11.mco.databinding.ActivityGooglemapsBinding
 
 class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
-
     private lateinit var mMap: GoogleMap
     private lateinit var lastLocation: Location
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var progressDbHelper: ProgressDbHelper
 
     companion object {
-        //Set of KEYs for String name of the values that are about to be sent to ProgressTrackerActivity.kt
-        const val ACTIVITY_KEY = "ACTIVITY_KEY"
-        const val DISTANCE_KEY = "DISTANCE_KEY"
-        const val TIME_KEY = "TIME_KEY"
-        const val CAL_BURNED_KEY = "CAL_BURNED_KEY"
-        const val EMAIL_KEY = "EMAIL_KEY"
         private const val LOCATION_REQUEST_CODE = 1
     }
 
@@ -53,16 +49,29 @@ class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.O
             val stopIntent: Intent = Intent(this@MapsTrackerActivity, ProgressTrackerActivity::class.java)
 
             //Send these values [P.S. these are just sample data]
-            stopIntent.putExtra(ACTIVITY_KEY, "Jogging")
-            stopIntent.putExtra(DISTANCE_KEY, 2000)
-            stopIntent.putExtra(TIME_KEY, 120)
-            stopIntent.putExtra(CAL_BURNED_KEY, 520.38f)
-            stopIntent.putExtra(EMAIL_KEY, "aleck@gmail.com")
+            stopIntent.putExtra(IntentKeys.ACTIVITY_KEY.name, "Jogging")
+            stopIntent.putExtra(IntentKeys.DISTANCE_KEY.name, 2000)
+            stopIntent.putExtra(IntentKeys.TIME_KEY.name, 120)
+            stopIntent.putExtra(IntentKeys.CAL_BURNED_KEY.name, 520.38f)
+            stopIntent.putExtra(IntentKeys.EMAIL_KEY.name, "aleck@gmail.com")
 
             startActivity(stopIntent)
 
             finish()
         }
+    }
+
+    private fun calculateCalBurn(Activity: String, weight: Int, time : Int): Float{
+        var totalCalBurn: Float
+        var MET: Float = 0f
+        if(Activity == "Walking"){
+            MET = 3.5F
+        } else if(Activity == "Jogging"){
+            MET = 7.0F
+        }
+
+        totalCalBurn = (time * (MET * 3.5 * weight) / 200).toFloat()
+        return totalCalBurn
     }
 
     override fun onMapReady(googleMap: GoogleMap) {

@@ -12,10 +12,6 @@ import com.mobdeve.s11.group11.mco.Database.UserDbHelper
 import com.mobdeve.s11.group11.mco.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity(){
-    companion object {
-        const val EMAIL_KEY = "EMAIL_KEY"
-    }
-
     private lateinit var userDbHelper: UserDbHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +38,7 @@ class LoginActivity : AppCompatActivity(){
             if(userDbHelper.checkLogin(email, password)){
                 val loginIntent: Intent = Intent(this@LoginActivity, ProfileActivity::class.java)
 
-                loginIntent.putExtra(EMAIL_KEY, email) //Send the email of user to ProfileActivity.kt
+                loginIntent.putExtra(IntentKeys.EMAIL_KEY.name, email) //Send the email of user to ProfileActivity.kt
                 startActivity(loginIntent)
 
                 finish()

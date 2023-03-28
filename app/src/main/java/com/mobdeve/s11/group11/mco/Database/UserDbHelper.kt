@@ -153,39 +153,6 @@ class UserDbHelper(context: Context?) :
         database.close()
     }
 
-    fun getAllUserDefault(): ArrayList<User>  {
-        val database: SQLiteDatabase = this.readableDatabase
-
-        val c : Cursor = database.query(
-            DbReferences.TABLE_NAME,
-            null,
-            null,
-            null,
-            null,
-            null,
-            DbReferences.COLUMN_NAME_LAST_NAME + " ASC, " + DbReferences.COLUMN_NAME_FIRST_NAME + " ASC",
-            null
-        )
-
-        val user : ArrayList<User>  = ArrayList()
-
-        while(c.moveToNext()) {
-            user.add(User(
-                c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_FIRST_NAME)),
-                c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_LAST_NAME)),
-                c.getInt(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_WEIGHT)),
-                c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_EMAIL)),
-                c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_PASSWORD)),
-                c.getLong(c.getColumnIndexOrThrow(DbReferences._ID))
-            ))
-        }
-
-        c.close()
-        database.close()
-
-        return user
-    }
-
     private object DbReferences {
         const val DATABASE_VERSION = 1
         const val DATABASE_NAME = "User_Database.db"

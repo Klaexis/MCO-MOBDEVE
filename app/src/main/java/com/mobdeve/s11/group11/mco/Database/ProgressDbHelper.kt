@@ -42,8 +42,8 @@ class ProgressDbHelper(context: Context?) :
         values.put(DbReferences.COLUMN_NAME_DISTANCE_TRAVELED, progress.distanceTraveled)
         values.put(DbReferences.COLUMN_NAME_TIME_ELAPSED, progress.timeElapsed)
         values.put(DbReferences.COLUMN_NAME_CALORIES_BURNED, progress.caloriesBurned)
-        values.put(DbReferences.COLUMN_NAME_EMAIL, progress.email)
         values.put(DbReferences.COLUMN_NAME_DATE, progress.date)
+        values.put(DbReferences.COLUMN_NAME_EMAIL, progress.email)
 
         // Insert the new row
         // Inserting returns the primary key value of the new row, but we can ignore that if we don’t need it
@@ -51,17 +51,24 @@ class ProgressDbHelper(context: Context?) :
         database.close()
     }
 
-    fun getAllProgress(): ArrayList<Progress>  {
+    @Synchronized
+    fun deleteProgress(){
+
+    }
+
+    fun getAllProgress(email: String): ArrayList<Progress>  {
         val database: SQLiteDatabase = this.readableDatabase
+        val whereClause = "email=?"
+        val whereArgs = arrayOf<String>(email)
 
         val c : Cursor = database.query(
             DbReferences.TABLE_NAME,
+            arrayOf("activity_met", "distance_traveled", "time_elapsed", "calories_burned", "date", "email", "id"),
+            whereClause,
+            whereArgs,
             null,
             null,
-            null,
-            null,
-            null,
-            DbReferences.COLUMN_NAME_EMAIL + " ASC, " + DbReferences._ID + " ASC",
+            DbReferences.COLUMN_NAME_DATE + " ASC, " + DbReferences._ID + " ASC",
             null
         )
 
@@ -69,13 +76,13 @@ class ProgressDbHelper(context: Context?) :
 
         while(c.moveToNext()) {
             contacts.add(Progress(
-                c.getLong(c.getColumnIndexOrThrow(DbReferences._ID)),
                 c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_ACTIVITY_MET)),
                 c.getInt(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_DISTANCE_TRAVELED)),
                 c.getInt(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_TIME_ELAPSED)),
                 c.getFloat(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_CALORIES_BURNED)),
+                c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_DATE)),
                 c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_EMAIL)),
-                c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_DATE))
+                c.getLong(c.getColumnIndexOrThrow(DbReferences._ID))
             ))
         }
 
@@ -95,8 +102,8 @@ class ProgressDbHelper(context: Context?) :
         const val COLUMN_NAME_DISTANCE_TRAVELED = "distance_traveled"
         const val COLUMN_NAME_TIME_ELAPSED = "time_elapsed"
         const val COLUMN_NAME_CALORIES_BURNED = "calories_burned"
-        const val COLUMN_NAME_EMAIL = "email"
         const val COLUMN_NAME_DATE = "date"
+        const val COLUMN_NAME_EMAIL = "email"
 
         const val CREATE_TABLE_STATEMENT =
             "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" +
@@ -105,8 +112,8 @@ class ProgressDbHelper(context: Context?) :
                     COLUMN_NAME_DISTANCE_TRAVELED + " TEXT, " +
                     COLUMN_NAME_TIME_ELAPSED + " TEXT, " +
                     COLUMN_NAME_CALORIES_BURNED + " TEXT, " +
-                    COLUMN_NAME_EMAIL + " TEXT, " +
-                    COLUMN_NAME_DATE + " TEXT)"
+                    COLUMN_NAME_DATE + " TEXT, " +
+                    COLUMN_NAME_EMAIL + " TEXT)"
 
         const val DROP_TABLE_STATEMENT = "DROP TABLE IF EXISTS " + TABLE_NAME
     }

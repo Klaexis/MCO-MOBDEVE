@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.mobdeve.s11.group11.mco.DataHelper.UserData
 import com.mobdeve.s11.group11.mco.Database.UserDbHelper
 import com.mobdeve.s11.group11.mco.databinding.ActivityCalculatorBinding
 
@@ -48,7 +47,7 @@ class CalculatorActivity : AppCompatActivity() {
 
         //Get intent from previous activity
         val calculatorIntent = intent
-        val getEmail = calculatorIntent.getStringExtra(LoginActivity.EMAIL_KEY) //Email from profile
+        val getEmail = calculatorIntent.getStringExtra(IntentKeys.EMAIL_KEY.name) //Email from profile
 
         userDbHelper = UserDbHelper.getInstance(this@CalculatorActivity)!!
         val getUser = userDbHelper.getUser(getEmail.toString())

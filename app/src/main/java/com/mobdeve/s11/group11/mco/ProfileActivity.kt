@@ -23,7 +23,7 @@ class ProfileActivity : AppCompatActivity() {
 
         //Get email from login to determine who is the current user
         val profileIntent = intent
-        val getEmail = profileIntent.getStringExtra(LoginActivity.EMAIL_KEY)
+        val getEmail = profileIntent.getStringExtra(IntentKeys.EMAIL_KEY.name)
 
         //Find the email of user
         userDbHelper = UserDbHelper.getInstance(this@ProfileActivity)!!
@@ -50,21 +50,22 @@ class ProfileActivity : AppCompatActivity() {
         viewBinding.historyBtn.setOnClickListener {
             //When clicked go to the progress history activity
             val historyIntent : Intent = Intent(this@ProfileActivity, ProgressTrackerActivity::class.java)
-            historyIntent.putExtra(LoginActivity.EMAIL_KEY, getEmail)
+            historyIntent.putExtra(IntentKeys.EMAIL_KEY.name, getEmail)
             startActivity(historyIntent)
         }
 
         viewBinding.startTrackingBtn.setOnClickListener {
             //When clicked go to the tracking/googlemaps activity
             val startTrackingIntent: Intent = Intent(this@ProfileActivity, MapsTrackerActivity::class.java)
-            startTrackingIntent.putExtra(LoginActivity.EMAIL_KEY, getEmail)
+            startTrackingIntent.putExtra(IntentKeys.EMAIL_KEY.name, getEmail)
+            startTrackingIntent.putExtra(IntentKeys.WEIGHT_KEY.name, getUser.weight)
             startActivity(startTrackingIntent)
         }
 
         viewBinding.calculatorBtn.setOnClickListener{
             //When clicked go to the calculator activity
             val calculatorIntent: Intent = Intent(this@ProfileActivity, CalculatorActivity::class.java)
-            calculatorIntent.putExtra(LoginActivity.EMAIL_KEY, getEmail) //Send email to CalculatorActivity.kt
+            calculatorIntent.putExtra(IntentKeys.EMAIL_KEY.name, getEmail) //Send email to CalculatorActivity.kt
             startActivity(calculatorIntent)
         }
     }
