@@ -39,19 +39,60 @@
         map:layout_constraintBottom_toTopOf="@id/stopBtn"
         tools:context=".MapsActivity" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/stopBtn"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:backgroundTint="@color/white"
-        android:text="Stop"
-        android:textColor="@color/black"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/map"
+        tools:layout_editor_absoluteX="8dp">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/stopBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:text="Stop"
+        android:textColor="@color/black"
         app:layout_constraintVertical_bias="0.0" />
+
+        <RadioGroup
+            android:id="@+id/radioActivityMaps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <RadioButton
+                android:id="@+id/radioWalkingMaps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/white"
+                android:checked="true"
+                android:gravity="right"
+                android:text="@string/radio_walking"
+                android:textColor="@color/white"
+                tools:layout_editor_absoluteX="181dp"
+                tools:layout_editor_absoluteY="171dp" />
+
+            <RadioButton
+                android:id="@+id/radioJoggingMapsabri"
+                android:layout_width="wrap_content"
+                android:gravity="right"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/white"
+                android:text="@string/radio_jogging"
+                android:textColor="@color/white"
+                tools:layout_editor_absoluteX="181dp"
+                tools:layout_editor_absoluteY="219dp" />
+
+        </RadioGroup>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

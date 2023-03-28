@@ -25,6 +25,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/logoutBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="36dp"
+        android:background="#00FFFFFF"
+        android:text="Logout"
+        android:textColor="#ff4500"
+        android:textSize="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.842"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextSizeCheck" />
+
     <View
         android:id="@+id/line_profile"
         android:layout_width="match_parent"
@@ -149,14 +165,14 @@
 
         <EditText
             android:id="@+id/et_profile_weight"
-            android:layout_width="45dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:focusableInTouchMode="true"
             android:inputType="numberSigned"
+            android:padding="10dp"
             android:text="60"
             android:textColor="@color/white"
             android:textSize="18dp"
-            android:focusableInTouchMode="true"
             tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
@@ -249,6 +265,7 @@
             tools:layout_editor_absoluteY="317dp" />
 
     </LinearLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
