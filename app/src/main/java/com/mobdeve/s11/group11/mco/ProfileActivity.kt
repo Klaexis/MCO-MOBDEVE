@@ -25,9 +25,8 @@ class ProfileActivity : AppCompatActivity() {
         val profileIntent = intent
         val getEmail = profileIntent.getStringExtra(IntentKeys.EMAIL_KEY.name)
 
-        //Find the email of user
-        userDbHelper = UserDbHelper.getInstance(this@ProfileActivity)!!
-        val getUser = userDbHelper.getUser(getEmail.toString())
+        userDbHelper = UserDbHelper.getInstance(this@ProfileActivity)!! // Initialize UserDbHelper
+        val getUser = userDbHelper.getUser(getEmail.toString()) //Find the email of user
 
         //Set TextViews to the User's credentials
         viewBinding.tvProfileFirstName.text = getUser.firstName
@@ -43,7 +42,10 @@ class ProfileActivity : AppCompatActivity() {
             var et_weight = findViewById<EditText>(R.id.et_profile_weight)
             var weight = et_weight.text.toString()
 
+            // Update the weight of user in the database
             userDbHelper.updateWeight(getEmail.toString(), weight.toInt())
+
+            // Upon clicking update button hide the keyboard and editable text will not be focused
             hideKeyboard(this@ProfileActivity)
         }
 
@@ -69,12 +71,14 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         viewBinding.logoutBtn.setOnClickListener{
+            // When clicked destroy activity and go back to LoginActivity
             val logoutIntent : Intent = Intent(this@ProfileActivity, LoginActivity::class.java)
             startActivity(logoutIntent)
             finish()
         }
     }
 
+    // Function to hide keyboard and clear focus on edit text
     fun hideKeyboard(activity: Activity) {
         val imm: InputMethodManager =
             activity.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager

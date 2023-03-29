@@ -32,9 +32,8 @@ class MyAdapter(private val data: ArrayList<Progress>) : RecyclerView.Adapter<My
             // Remove the record from the position
             this.data.removeAt(position)
 
-            // Delete the record in the database
-            progressDbHelper = ProgressDbHelper.getInstance(holder.itemView.context)!!
-            progressDbHelper.deleteProgress(holder.id, holder.email)
+            progressDbHelper = ProgressDbHelper.getInstance(holder.itemView.context)!! // Initialize ProgressDbHelper
+            progressDbHelper.deleteProgress(holder.id, holder.email) // Delete the record in the database
 
             // Inform the adapter class that the data has changed
             notifyDataSetChanged() // This forces the RecyclerView to update

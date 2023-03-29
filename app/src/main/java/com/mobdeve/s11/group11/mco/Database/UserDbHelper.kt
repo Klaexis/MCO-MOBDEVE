@@ -33,15 +33,16 @@ class UserDbHelper(context: Context?) :
         onCreate(sqLiteDatabase)
     }
 
+    // Get user according to the email
     @Synchronized
     fun getUser(email: String) : User{
         val database = this.readableDatabase
         val whereClause = "email=?"
         val whereArgs = arrayOf<String>(email)
 
-        var user: User = User("", "", 0, "", "", 0)
+        var user: User = User("", "", 0, "", "", 0) // Initialize user variable
 
-        //val userCursor : Cursor = database.rawQuery("SELECT * FROM " + DbReferences.TABLE_NAME + "WHERE email=" + email, null)
+        // Query to find user according to the email in the database
         val userCursor : Cursor = database.query(
             DbReferences.TABLE_NAME,
             arrayOf("first_name", "last_name", "weight", "email", "password", "id"),
@@ -50,6 +51,7 @@ class UserDbHelper(context: Context?) :
             null, null, null
         )
 
+        // Get existing user
         if(userCursor.count > 0) {
             userCursor.moveToFirst()
             user = User(
@@ -67,24 +69,29 @@ class UserDbHelper(context: Context?) :
         return user
     }
 
+    // Update the weight of the user
     @Synchronized
     fun updateWeight(email: String, weight : Int){
         val database = this.writableDatabase
         val whereClause = "email=?"
         val whereArgs = arrayOf<String>(email)
 
+        // Put weight value into the column of weight
         val values = ContentValues()
         values.put(DbReferences.COLUMN_NAME_WEIGHT, weight)
 
+        // Update user's weight
         database.update(DbReferences.TABLE_NAME, values, whereClause, whereArgs)
     }
 
+    //Authenticate the user if email and password matches
     @Synchronized
     fun checkLogin(email: String, password: String) : Boolean{
         val database = this.writableDatabase
         val whereClause = "email=? AND password=?"
         val whereArgs = arrayOf<String>(email, password)
 
+        // Query user who have the same email and password in the database
         val loginCursor : Cursor = database.query(
             DbReferences.TABLE_NAME,
             arrayOf("email", "password"),
@@ -93,6 +100,7 @@ class UserDbHelper(context: Context?) :
             null, null, null
         )
 
+        // True = Email and Password matches, otherwise False
         var isTrue = if(loginCursor.count == 1){
             loginCursor.moveToFirst()
             true
@@ -113,6 +121,7 @@ class UserDbHelper(context: Context?) :
         val whereClause = "email=?"
         val whereArgs = arrayOf<String>(email)
 
+        // Query user to check email column in the database
         val emailCursor : Cursor = database.query(
             DbReferences.TABLE_NAME,
             arrayOf("email"),
@@ -121,6 +130,7 @@ class UserDbHelper(context: Context?) :
             null, null, null
         )
 
+        // True = email exists inside the database, otherwise false if nonexistent
         var isExist = if(emailCursor.count > 0){
             emailCursor.moveToFirst()
             true

@@ -10,9 +10,9 @@ import com.mobdeve.s11.group11.mco.databinding.ActivityCalculatorBinding
 
 class CalculatorActivity : AppCompatActivity() {
     private lateinit var calBurn: EditText
-    private lateinit var userDbHelper: UserDbHelper
+    private lateinit var userDbHelper: UserDbHelper // Variable for UserDbHelper
 
-    //Check if edit text is empty return true if it is otherwise false
+    //Check if edit text is empty, return true if it is empty, otherwise false
     private fun isEmpty(text: EditText): Boolean {
         val str: CharSequence = text.text.toString()
         return TextUtils.isEmpty(str)
@@ -47,12 +47,13 @@ class CalculatorActivity : AppCompatActivity() {
 
         //Get intent from previous activity
         val calculatorIntent = intent
-        val getEmail = calculatorIntent.getStringExtra(IntentKeys.EMAIL_KEY.name) //Email from profile
+        val getEmail = calculatorIntent.getStringExtra(IntentKeys.EMAIL_KEY.name) //Email from ProfileActivity.kt
 
-        userDbHelper = UserDbHelper.getInstance(this@CalculatorActivity)!!
-        val getUser = userDbHelper.getUser(getEmail.toString())
+
+        userDbHelper = UserDbHelper.getInstance(this@CalculatorActivity)!! // Initialize UserDbHelper
+        val getUser = userDbHelper.getUser(getEmail.toString()) // Get the user details according to the email
         et_weight.setText(getUser.weight.toString()) //Set the text to the weight of the user
-        et_weight.isEnabled = false
+        et_weight.isEnabled = false // Set to false so user cannot change
 
         viewBinding.calculateBtn.setOnClickListener{
             var isFilled = true

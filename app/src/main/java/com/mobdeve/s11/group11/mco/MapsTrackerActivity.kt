@@ -52,8 +52,8 @@ class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.O
         val mapsTrackerIntent = intent
         val getEmail = mapsTrackerIntent.getStringExtra(IntentKeys.EMAIL_KEY.name) //Email from profile
 
-        userDbHelper = UserDbHelper.getInstance(this@MapsTrackerActivity)!!
-        val getUser = userDbHelper.getUser(getEmail.toString())
+        userDbHelper = UserDbHelper.getInstance(this@MapsTrackerActivity)!! // Initialize UserDbHelper
+        val getUser = userDbHelper.getUser(getEmail.toString()) // Get user from the email coming from intent
 
         // Get the radio button ID for the activityMET
         var radioAction = findViewById<RadioGroup>(R.id.radioActivityMaps)
@@ -64,6 +64,7 @@ class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.O
             // find the radiobutton by returned id
             var radioActionButton = findViewById<RadioButton>(selectedId)
 
+            // [THIS IS JUST SAMPLE TO DATA THAT WILL STORE INTO THE DATABASE TO CHECK PROGRESS TRACKER]
             var distanceTraveled: Int = 1000
             var timeElapsed: Int = 60
             var caloriesBurned: Float = calculateCalBurn(radioActionButton.text.toString(), getUser.weight, timeElapsed)
@@ -73,7 +74,8 @@ class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.O
             //When STOP button is clicked send values to ProgressTrackerActivity.kt
             val stopIntent: Intent = Intent(this@MapsTrackerActivity, ProgressTrackerActivity::class.java)
 
-            progressDbHelper = ProgressDbHelper.getInstance(this@MapsTrackerActivity)!!
+            progressDbHelper = ProgressDbHelper.getInstance(this@MapsTrackerActivity)!! // Initialize ProgressDbHelper
+            // Add progress record to the database
             progressDbHelper.addProgress(Progress(radioActionButton.text.toString(), distanceTraveled, timeElapsed, caloriesBurned, date, email.toString(), 0))
 
             stopIntent.putExtra(IntentKeys.EMAIL_KEY.name, getEmail) //Send email to ProgressTrackerActivity.kt

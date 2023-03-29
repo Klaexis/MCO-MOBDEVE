@@ -69,15 +69,18 @@ class SignUpActivity : AppCompatActivity() {
             }
 
             if(isTrue){
-                userDbHelper = UserDbHelper.getInstance(this@SignUpActivity)!!
+                userDbHelper = UserDbHelper.getInstance(this@SignUpActivity)!! // Initialize UserDbHelper
 
+                // Check if email already exists in the database
                 var emailExist = userDbHelper.checkEmailExist(email)
+                // If email does not exist then create user, otherwise don't
                 if(!emailExist){
                     //Create user and go to Login activity
                     val signupIntent : Intent = Intent(this@SignUpActivity, LoginActivity::class.java)
                     startActivity(signupIntent)
 
                     var weight: Int = weightStr.toInt()
+                    // Add user to the database
                     userDbHelper.addUser(User(firstName, lastName, weight, email, password, 0))
 
                     finish()

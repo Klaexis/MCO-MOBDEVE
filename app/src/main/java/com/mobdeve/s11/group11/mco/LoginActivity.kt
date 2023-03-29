@@ -12,7 +12,7 @@ import com.mobdeve.s11.group11.mco.Database.UserDbHelper
 import com.mobdeve.s11.group11.mco.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity(){
-    private lateinit var userDbHelper: UserDbHelper
+    private lateinit var userDbHelper: UserDbHelper // Variable for UserDbHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,8 +33,8 @@ class LoginActivity : AppCompatActivity(){
             val email : String = et_email.text.toString()
             val password : String = et_password.text.toString()
 
-            //Check user
-            userDbHelper = UserDbHelper.getInstance(this@LoginActivity)!!
+            userDbHelper = UserDbHelper.getInstance(this@LoginActivity)!! //Initialize UserDbHelper
+            // Check email and password that was inputted, if True then authenticate, otherwise don't
             if(userDbHelper.checkLogin(email, password)){
                 val loginIntent: Intent = Intent(this@LoginActivity, ProfileActivity::class.java)
 

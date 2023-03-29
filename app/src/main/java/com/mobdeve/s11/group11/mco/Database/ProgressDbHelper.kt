@@ -51,22 +51,26 @@ class ProgressDbHelper(context: Context?) :
         database.close()
     }
 
+    // Function for deleting the progress record
     @Synchronized
     fun deleteProgress(id: Long, email: String){
         val database = this.writableDatabase
         val whereClause = "id=? AND email=?"
         val whereArgs = arrayOf<String>(id.toString(), email)
 
+        // Delete progress record according to the id of the record and email of the user
         database.delete(DbReferences.TABLE_NAME, whereClause, whereArgs)
 
         database.close()
     }
 
+    // Get all progress records of the user
     fun getAllProgress(email: String): ArrayList<Progress>  {
         val database: SQLiteDatabase = this.readableDatabase
         val whereClause = "email=?"
         val whereArgs = arrayOf<String>(email)
 
+        // Query to get progress record according to the user's email
         val c : Cursor = database.query(
             DbReferences.TABLE_NAME,
             arrayOf("activity_met", "distance_traveled", "time_elapsed", "calories_burned", "date", "email", "id"),
@@ -80,6 +84,7 @@ class ProgressDbHelper(context: Context?) :
 
         val contacts : ArrayList<Progress>  = ArrayList()
 
+        // Add existing progress records into an array list
         while(c.moveToNext()) {
             contacts.add(Progress(
                 c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_ACTIVITY_MET)),
