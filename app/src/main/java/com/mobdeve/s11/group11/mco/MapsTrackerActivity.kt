@@ -6,6 +6,8 @@ import android.content.pm.PackageManager
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -16,6 +18,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.mobdeve.s11.group11.mco.Database.Progress
 import com.mobdeve.s11.group11.mco.Database.ProgressDbHelper
 import com.mobdeve.s11.group11.mco.Database.UserDbHelper
 import com.mobdeve.s11.group11.mco.databinding.ActivityGooglemapsBinding
@@ -24,6 +27,7 @@ class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.O
     private lateinit var mMap: GoogleMap
     private lateinit var lastLocation: Location
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var userDbHelper: UserDbHelper
     private lateinit var progressDbHelper: ProgressDbHelper
 
     companion object {
@@ -44,17 +48,35 @@ class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.O
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
+        //Get intent from previous activity
+        val mapsTrackerIntent = intent
+        val getEmail = mapsTrackerIntent.getStringExtra(IntentKeys.EMAIL_KEY.name) //Email from profile
+
+        userDbHelper = UserDbHelper.getInstance(this@MapsTrackerActivity)!!
+        val getUser = userDbHelper.getUser(getEmail.toString())
+
+        // Get the radio button ID for the activityMET
+        var radioAction = findViewById<RadioGroup>(R.id.radioActivityMaps)
+
         viewBinding.stopBtn.setOnClickListener{
+            // get selected radio button from radioAction
+            var selectedId: Int = radioAction.checkedRadioButtonId
+            // find the radiobutton by returned id
+            var radioActionButton = findViewById<RadioButton>(selectedId)
+
+            var distanceTraveled: Int = 1000
+            var timeElapsed: Int = 60
+            var caloriesBurned: Float = calculateCalBurn(radioActionButton.text.toString(), getUser.weight, timeElapsed)
+            var date: String = "March 01, 2023"
+            var email = getEmail
+
             //When STOP button is clicked send values to ProgressTrackerActivity.kt
             val stopIntent: Intent = Intent(this@MapsTrackerActivity, ProgressTrackerActivity::class.java)
 
-            //Send these values [P.S. these are just sample data]
-            stopIntent.putExtra(IntentKeys.ACTIVITY_KEY.name, "Jogging")
-            stopIntent.putExtra(IntentKeys.DISTANCE_KEY.name, 2000)
-            stopIntent.putExtra(IntentKeys.TIME_KEY.name, 120)
-            stopIntent.putExtra(IntentKeys.CAL_BURNED_KEY.name, 520.38f)
-            stopIntent.putExtra(IntentKeys.EMAIL_KEY.name, "aleck@gmail.com")
+            progressDbHelper = ProgressDbHelper.getInstance(this@MapsTrackerActivity)!!
+            progressDbHelper.addProgress(Progress(radioActionButton.text.toString(), distanceTraveled, timeElapsed, caloriesBurned, date, email.toString(), 0))
 
+            stopIntent.putExtra(IntentKeys.EMAIL_KEY.name, getEmail) //Send email to ProgressTrackerActivity.kt
             startActivity(stopIntent)
 
             finish()

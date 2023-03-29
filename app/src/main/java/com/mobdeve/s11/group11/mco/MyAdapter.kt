@@ -1,13 +1,18 @@
 package com.mobdeve.s11.group11.mco
 
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.mobdeve.s11.group11.mco.Database.Progress
+import com.mobdeve.s11.group11.mco.Database.ProgressDbHelper
 import com.mobdeve.s11.group11.mco.databinding.ItemListBinding
 
+
 class MyAdapter(private val data: ArrayList<Progress>) : RecyclerView.Adapter<MyViewHolder>() {
+    private lateinit var progressDbHelper: ProgressDbHelper
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         // This is a way to perform View Binding in the RecyclerView.
         val itemListBinding: ItemListBinding = ItemListBinding.inflate(
@@ -27,6 +32,8 @@ class MyAdapter(private val data: ArrayList<Progress>) : RecyclerView.Adapter<My
 
             // Remove the element from the data (i.e. ArrayList)
             this.data.removeAt(position)
+            progressDbHelper = ProgressDbHelper.getInstance(holder.itemView.context)!!
+            //progressDbHelper.deleteProgress(holder.)
 
             // Inform the adapter class that the data has changed
             notifyDataSetChanged() // This forces the RecyclerView to update

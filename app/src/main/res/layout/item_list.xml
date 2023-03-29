@@ -70,17 +70,17 @@
             tools:layout_editor_absoluteY="8dp" />
 
         <TextView
-            android:id="@+id/itemCalBurn"
+            android:id="@+id/itemDistance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
-            android:text="156 calories"
             android:gravity="right"
+            android:text="100 meters"
             android:textColor="@color/black"
             tools:ignore="TouchTargetSizeCheck"
-            tools:layout_editor_absoluteX="208dp"
-            tools:layout_editor_absoluteY="131dp" />
+            tools:layout_editor_absoluteX="203dp"
+            tools:layout_editor_absoluteY="64dp" />
 
     </LinearLayout>
 
@@ -106,17 +106,17 @@
             tools:layout_editor_absoluteY="48dp" />
 
         <TextView
-            android:id="@+id/itemDistance"
+            android:id="@+id/itemTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
             android:gravity="right"
-            android:text="100 meters"
+            android:text="100 minutes"
             android:textColor="@color/black"
             tools:ignore="TouchTargetSizeCheck"
-            tools:layout_editor_absoluteX="203dp"
-            tools:layout_editor_absoluteY="64dp" />
+            tools:layout_editor_absoluteX="208dp"
+            tools:layout_editor_absoluteY="103dp" />
 
 
     </LinearLayout>
@@ -143,17 +143,17 @@
             tools:layout_editor_absoluteY="75dp" />
 
         <TextView
-            android:id="@+id/itemTime"
+            android:id="@+id/itemCalBurn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
             android:gravity="right"
-            android:text="100 minutes"
+            android:text="156 calories"
             android:textColor="@color/black"
             tools:ignore="TouchTargetSizeCheck"
             tools:layout_editor_absoluteX="208dp"
-            tools:layout_editor_absoluteY="103dp" />
+            tools:layout_editor_absoluteY="131dp" />
 
     </LinearLayout>
 

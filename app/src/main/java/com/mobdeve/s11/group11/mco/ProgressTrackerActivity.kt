@@ -20,27 +20,15 @@ class ProgressTrackerActivity : AppCompatActivity() {
         val viewBinding : ActivityProgressBinding = ActivityProgressBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        /* [EXPERIMENT CODE FOR GETTING VALUE FROM MapsTrackerActivity.kt] P.S. DOES NOT WORK
-        [Hypothesis, notifyDataSetChanged() crashes the code due to the lateinit of myAdapter.
-        Also the onCreate may be the problem due to the fact that it creates/loads the same data
-        again and again when activity starts */
-//        val progressIntent = intent
-//
-//        val activityMet: String = progressIntent.getStringExtra(MapsTrackerActivity.ACTIVITY_KEY).toString()
-//        val distance: Int = progressIntent.getIntExtra(MapsTrackerActivity.DISTANCE_KEY, 0)
-//        val time: Int = progressIntent.getIntExtra(MapsTrackerActivity.TIME_KEY, 0)
-//        val calBurn : Float = progressIntent.getFloatExtra(MapsTrackerActivity.CAL_BURNED_KEY, 0f)
-//        val email : String = progressIntent.getStringExtra(MapsTrackerActivity.EMAIL_KEY).toString()
-//        Toast.makeText(this@ProgressTrackerActivity, distance.toString(), Toast.LENGTH_SHORT).show()
-//
-//        val progress = Progress(activityMet, distance, time, calBurn, email)
-//        ProgressGenerator.loadProgress().add(progress)
-//
-//        this.myAdapter.notifyDataSetChanged()
+        //Get intent from previous activity
+        val progressTrackerIntent = intent
+        val getEmail = progressTrackerIntent.getStringExtra(IntentKeys.EMAIL_KEY.name) //Email from profile
+
 
         //Set the recyclerView and myAdapter
         this.recyclerView = viewBinding.recyclerView
-        this.myAdapter = MyAdapter(ProgressGenerator.loadProgress())
+        progressDbHelper = ProgressDbHelper.getInstance(this@ProgressTrackerActivity)!!
+        this.myAdapter = MyAdapter(progressDbHelper.getAllProgress(getEmail.toString()))
         this.recyclerView.adapter = myAdapter
         this.recyclerView.layoutManager = LinearLayoutManager(this)
     }

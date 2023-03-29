@@ -50,15 +50,14 @@ class ProfileActivity : AppCompatActivity() {
         viewBinding.historyBtn.setOnClickListener {
             //When clicked go to the progress history activity
             val historyIntent : Intent = Intent(this@ProfileActivity, ProgressTrackerActivity::class.java)
-            historyIntent.putExtra(IntentKeys.EMAIL_KEY.name, getEmail)
+            historyIntent.putExtra(IntentKeys.EMAIL_KEY.name, getEmail) //Send email to ProgressTrackerActivity.kt
             startActivity(historyIntent)
         }
 
         viewBinding.startTrackingBtn.setOnClickListener {
             //When clicked go to the tracking/googlemaps activity
             val startTrackingIntent: Intent = Intent(this@ProfileActivity, MapsTrackerActivity::class.java)
-            startTrackingIntent.putExtra(IntentKeys.EMAIL_KEY.name, getEmail)
-            startTrackingIntent.putExtra(IntentKeys.WEIGHT_KEY.name, getUser.weight)
+            startTrackingIntent.putExtra(IntentKeys.EMAIL_KEY.name, getEmail) //Send email to MapsTrackerActivity.kt
             startActivity(startTrackingIntent)
         }
 
@@ -67,6 +66,12 @@ class ProfileActivity : AppCompatActivity() {
             val calculatorIntent: Intent = Intent(this@ProfileActivity, CalculatorActivity::class.java)
             calculatorIntent.putExtra(IntentKeys.EMAIL_KEY.name, getEmail) //Send email to CalculatorActivity.kt
             startActivity(calculatorIntent)
+        }
+
+        viewBinding.logoutBtn.setOnClickListener{
+            val logoutIntent : Intent = Intent(this@ProfileActivity, LoginActivity::class.java)
+            startActivity(logoutIntent)
+            finish()
         }
     }
 
