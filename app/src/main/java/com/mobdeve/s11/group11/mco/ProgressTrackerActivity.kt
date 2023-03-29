@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.mobdeve.s11.group11.mco.DataHelper.ProgressGenerator
 import com.mobdeve.s11.group11.mco.Database.ProgressDbHelper
 import com.mobdeve.s11.group11.mco.databinding.ActivityProgressBinding
 
