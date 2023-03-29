@@ -2,7 +2,6 @@ package com.mobdeve.s11.group11.mco
 
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -30,10 +29,12 @@ class MyAdapter(private val data: ArrayList<Progress>) : RecyclerView.Adapter<My
             // Inform the user of the deleted element
             Toast.makeText(holder.itemView.context, "Record has been deleted", Toast.LENGTH_SHORT).show()
 
-            // Remove the element from the data (i.e. ArrayList)
+            // Remove the record from the position
             this.data.removeAt(position)
+
+            // Delete the record in the database
             progressDbHelper = ProgressDbHelper.getInstance(holder.itemView.context)!!
-            //progressDbHelper.deleteProgress(holder.)
+            progressDbHelper.deleteProgress(holder.id, holder.email)
 
             // Inform the adapter class that the data has changed
             notifyDataSetChanged() // This forces the RecyclerView to update

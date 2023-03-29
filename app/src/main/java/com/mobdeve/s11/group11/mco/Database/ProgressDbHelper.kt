@@ -52,10 +52,10 @@ class ProgressDbHelper(context: Context?) :
     }
 
     @Synchronized
-    fun deleteProgress(id: Int){
+    fun deleteProgress(id: Long, email: String){
         val database = this.writableDatabase
-        val whereClause = "id=?"
-        val whereArgs = arrayOf<String>(id.toString())
+        val whereClause = "id=? AND email=?"
+        val whereArgs = arrayOf<String>(id.toString(), email)
 
         database.delete(DbReferences.TABLE_NAME, whereClause, whereArgs)
 

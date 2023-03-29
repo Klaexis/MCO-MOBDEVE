@@ -24,7 +24,6 @@ class ProgressTrackerActivity : AppCompatActivity() {
         val progressTrackerIntent = intent
         val getEmail = progressTrackerIntent.getStringExtra(IntentKeys.EMAIL_KEY.name) //Email from profile
 
-
         //Set the recyclerView and myAdapter
         this.recyclerView = viewBinding.recyclerView
         progressDbHelper = ProgressDbHelper.getInstance(this@ProgressTrackerActivity)!!
