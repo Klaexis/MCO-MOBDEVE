@@ -1,4 +1,4 @@
-package com.mobdeve.s11.group11.mco
+package com.mobdeve.s11.group15.mco
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,9 +10,9 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.mobdeve.s11.group11.mco.Database.User
-import com.mobdeve.s11.group11.mco.Database.UserDbHelper
-import com.mobdeve.s11.group11.mco.databinding.ActivitySignupBinding
+import com.mobdeve.s11.group15.mco.Database.User
+import com.mobdeve.s11.group15.mco.Database.UserDbHelper
+import com.mobdeve.s11.group15.mco.databinding.ActivitySignupBinding
 
 
 class SignUpActivity : AppCompatActivity() {

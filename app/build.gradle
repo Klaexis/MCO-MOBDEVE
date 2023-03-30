@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.mobdeve.s11.group11.mco'
+    namespace 'com.mobdeve.s11.group15.mco'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.mobdeve.s11.group11.mco"
+        applicationId "com.mobdeve.s11.group15.mco"
         minSdk 23
         targetSdk 33
         versionCode 1

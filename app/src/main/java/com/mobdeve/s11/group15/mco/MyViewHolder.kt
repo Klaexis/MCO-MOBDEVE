@@ -1,10 +1,10 @@
-package com.mobdeve.s11.group11.mco
+package com.mobdeve.s11.group15.mco
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.mobdeve.s11.group11.mco.Database.Progress
-import com.mobdeve.s11.group11.mco.Database.ProgressDbHelper
-import com.mobdeve.s11.group11.mco.databinding.ItemListBinding
+import com.mobdeve.s11.group15.mco.Database.Progress
+import com.mobdeve.s11.group15.mco.Database.ProgressDbHelper
+import com.mobdeve.s11.group15.mco.databinding.ItemListBinding
 
 class MyViewHolder(private val viewBinding: ItemListBinding): RecyclerView.ViewHolder(viewBinding.root) {
     var email = ""

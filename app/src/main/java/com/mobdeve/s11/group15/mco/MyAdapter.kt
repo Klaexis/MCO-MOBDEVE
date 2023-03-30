@@ -1,13 +1,13 @@
-package com.mobdeve.s11.group11.mco
+package com.mobdeve.s11.group15.mco
 
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.mobdeve.s11.group11.mco.Database.Progress
-import com.mobdeve.s11.group11.mco.Database.ProgressDbHelper
-import com.mobdeve.s11.group11.mco.databinding.ItemListBinding
+import com.mobdeve.s11.group15.mco.Database.Progress
+import com.mobdeve.s11.group15.mco.Database.ProgressDbHelper
+import com.mobdeve.s11.group15.mco.databinding.ItemListBinding
 
 
 class MyAdapter(private val data: ArrayList<Progress>) : RecyclerView.Adapter<MyViewHolder>() {

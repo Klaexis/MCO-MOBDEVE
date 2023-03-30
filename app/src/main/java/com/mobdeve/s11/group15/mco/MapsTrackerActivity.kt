@@ -1,4 +1,4 @@
-package com.mobdeve.s11.group11.mco
+package com.mobdeve.s11.group15.mco
 
 import android.Manifest
 import android.content.Intent
@@ -18,10 +18,10 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import com.mobdeve.s11.group11.mco.Database.Progress
-import com.mobdeve.s11.group11.mco.Database.ProgressDbHelper
-import com.mobdeve.s11.group11.mco.Database.UserDbHelper
-import com.mobdeve.s11.group11.mco.databinding.ActivityGooglemapsBinding
+import com.mobdeve.s11.group15.mco.Database.Progress
+import com.mobdeve.s11.group15.mco.Database.ProgressDbHelper
+import com.mobdeve.s11.group15.mco.Database.UserDbHelper
+import com.mobdeve.s11.group15.mco.databinding.ActivityGooglemapsBinding
 
 class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
     private lateinit var mMap: GoogleMap

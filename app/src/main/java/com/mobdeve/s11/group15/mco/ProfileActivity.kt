@@ -1,4 +1,4 @@
-package com.mobdeve.s11.group11.mco
+package com.mobdeve.s11.group15.mco
 
 import android.app.Activity
 import android.content.Intent
@@ -8,8 +8,8 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.mobdeve.s11.group11.mco.Database.UserDbHelper
-import com.mobdeve.s11.group11.mco.databinding.ActivityProfileBinding
+import com.mobdeve.s11.group15.mco.Database.UserDbHelper
+import com.mobdeve.s11.group15.mco.databinding.ActivityProfileBinding
 
 
 class ProfileActivity : AppCompatActivity() {
