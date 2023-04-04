@@ -1,64 +1,112 @@
 package com.mobdeve.s11.group15.mco
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Geocoder
 import android.location.Location
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import android.os.*
+import android.widget.Chronometer
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
+import androidx.core.content.ContextCompat
+import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
+import com.google.android.gms.tasks.Task
 import com.mobdeve.s11.group15.mco.Database.Progress
 import com.mobdeve.s11.group15.mco.Database.ProgressDbHelper
 import com.mobdeve.s11.group15.mco.Database.UserDbHelper
 import com.mobdeve.s11.group15.mco.databinding.ActivityGooglemapsBinding
+import java.time.LocalDate
+import java.util.*
 
-class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+
+class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback{
+
+    private lateinit var viewBinding: ActivityGooglemapsBinding
+
+    //Maps
     private lateinit var mMap: GoogleMap
-    private lateinit var lastLocation: Location
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var userDbHelper: UserDbHelper
     private lateinit var progressDbHelper: ProgressDbHelper
-
     companion object {
         private const val LOCATION_REQUEST_CODE = 1
     }
 
+    private var geocoder: Geocoder? = null
+    var locationRequest: LocationRequest? = null
+
+    private lateinit var startingLocation: Location
+    var startingLocationMarker: Marker? = null
+
+    private lateinit var destinationLocation: Location
+    var userLocationMarker: Marker? = null
+
+    private lateinit var timer: Chronometer
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         //Set viewBinding to activity_googlemaps.xml
-        val viewBinding : ActivityGooglemapsBinding = ActivityGooglemapsBinding.inflate(layoutInflater)
+        viewBinding = ActivityGooglemapsBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
+
+        timer = viewBinding.timerTextView
+        timer.base = SystemClock.elapsedRealtime()
+        timer.start()
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+        geocoder = Geocoder(this)
+
+        startingLocation = Location("dummy")
+        destinationLocation = Location("dummy")
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
+        locationRequest = LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 100)
+            .setWaitForAccurateLocation(false)
+            .setMinUpdateIntervalMillis(2000)
+            .setMaxUpdateDelayMillis(100)
+            .build()
+
         //Get intent from previous activity
         val mapsTrackerIntent = intent
-        val getEmail = mapsTrackerIntent.getStringExtra(IntentKeys.EMAIL_KEY.name) //Email from profile
+        val getEmail =
+            mapsTrackerIntent.getStringExtra(IntentKeys.EMAIL_KEY.name) //Email from profile
 
-        userDbHelper = UserDbHelper.getInstance(this@MapsTrackerActivity)!! // Initialize UserDbHelper
-        val getUser = userDbHelper.getUser(getEmail.toString()) // Get user from the email coming from intent
+        val dateToday = LocalDate.now().toString()
+
+        userDbHelper =
+            UserDbHelper.getInstance(this@MapsTrackerActivity)!! // Initialize UserDbHelper
+        val getUser =
+            userDbHelper.getUser(getEmail.toString()) // Get user from the email coming from intent
 
         // Get the radio button ID for the activityMET
         var radioAction = findViewById<RadioGroup>(R.id.radioActivityMaps)
 
-        viewBinding.stopBtn.setOnClickListener{
+        viewBinding.stopBtn.setOnClickListener {
+            // Stops Timer
+            timer.stop()
+
+            // Calculation to get Minutes
+            val elpasedMinutes = ((SystemClock.elapsedRealtime() - timer.base) / 1000) / 60
+
+            // Calculation to get Seconds
+            val elpasedSeconds = (SystemClock.elapsedRealtime() - timer.base) / 1000
+
             // get selected radio button from radioAction
             var selectedId: Int = radioAction.checkedRadioButtonId
             // find the radiobutton by returned id
@@ -66,31 +114,47 @@ class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.O
 
             // [THIS IS JUST SAMPLE TO DATA THAT WILL STORE INTO THE DATABASE TO CHECK PROGRESS TRACKER]
             var distanceTraveled: Int = 1000
-            var timeElapsed: Int = 60
-            var caloriesBurned: Float = calculateCalBurn(radioActionButton.text.toString(), getUser.weight, timeElapsed)
-            var date: String = "March 01, 2023"
+            var timeElapsed = elpasedSeconds.toInt()
+            var caloriesBurned: Float =
+                calculateCalBurn(radioActionButton.text.toString(), getUser.weight, timeElapsed)
+            var date: String = dateToday
             var email = getEmail
 
             //When STOP button is clicked send values to ProgressTrackerActivity.kt
-            val stopIntent: Intent = Intent(this@MapsTrackerActivity, ProgressTrackerActivity::class.java)
+            val stopIntent: Intent =
+                Intent(this@MapsTrackerActivity, ProgressTrackerActivity::class.java)
 
-            progressDbHelper = ProgressDbHelper.getInstance(this@MapsTrackerActivity)!! // Initialize ProgressDbHelper
+            progressDbHelper =
+                ProgressDbHelper.getInstance(this@MapsTrackerActivity)!! // Initialize ProgressDbHelper
             // Add progress record to the database
-            progressDbHelper.addProgress(Progress(radioActionButton.text.toString(), distanceTraveled, timeElapsed, caloriesBurned, date, email.toString(), 0))
+            progressDbHelper.addProgress(
+                Progress(
+                    radioActionButton.text.toString(),
+                    distanceTraveled,
+                    timeElapsed,
+                    caloriesBurned,
+                    date,
+                    email.toString(),
+                    0
+                )
+            )
 
-            stopIntent.putExtra(IntentKeys.EMAIL_KEY.name, getEmail) //Send email to ProgressTrackerActivity.kt
+            stopIntent.putExtra(
+                IntentKeys.EMAIL_KEY.name,
+                getEmail
+            ) //Send email to ProgressTrackerActivity.kt
             startActivity(stopIntent)
 
             finish()
         }
     }
 
-    private fun calculateCalBurn(Activity: String, weight: Int, time : Int): Float{
+    private fun calculateCalBurn(Activity: String, weight: Int, time: Int): Float {
         var totalCalBurn: Float
         var MET: Float = 0f
-        if(Activity == "Walking"){
+        if (Activity == "Walking") {
             MET = 3.5F
-        } else if(Activity == "Jogging"){
+        } else if (Activity == "Jogging") {
             MET = 7.0F
         }
 
@@ -100,53 +164,133 @@ class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.O
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-
+        mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
         mMap.uiSettings.isZoomControlsEnabled = true
-        mMap.setOnMarkerClickListener(this)
-        setUpMap()
-    }
-
-    private fun setUpMap(){
-
-        //Asks for Location Permission
-        if (ActivityCompat.checkSelfPermission(
+        if (ContextCompat.checkSelfPermission(
                 this,
-                android.Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                this,
-                android.Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
         ) {
-
-            ActivityCompat.requestPermissions(this,
-                arrayOf(
-                    android.Manifest.permission.ACCESS_FINE_LOCATION,
-                    android.Manifest.permission.ACCESS_COARSE_LOCATION
-                ),
-                LOCATION_REQUEST_CODE
-            )
-
-            return
-        }
-
-        mMap.isMyLocationEnabled = true
-        fusedLocationClient.lastLocation.addOnSuccessListener(this) {  location ->
-
-            if(location != null){
-                lastLocation = location
-                val currentLatLong = LatLng(location.latitude, location.longitude)
-                placeMarkerOnMap(currentLatLong)
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLong, 12f))
+        } else {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    this,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                )
+            ) {
+                //We can show user a dialog why this permission is necessary
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf<String>(Manifest.permission.ACCESS_FINE_LOCATION),
+                    LOCATION_REQUEST_CODE
+                )
+            } else {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf<String>(Manifest.permission.ACCESS_FINE_LOCATION),
+                    LOCATION_REQUEST_CODE
+                )
             }
+        }
 
+    }
+
+    var locationCallback: LocationCallback = object : LocationCallback() {
+        override fun onLocationResult(locationResult: LocationResult) {
+            super.onLocationResult(locationResult)
+            if (mMap != null) {
+                locationResult.lastLocation?.let { setUserLocationMarker(it) }
+            }
         }
     }
 
-    private fun placeMarkerOnMap(currentLatLong: LatLng) {
-        val markerOptions = MarkerOptions().position(currentLatLong)
-        markerOptions.title("$currentLatLong")
-        mMap.addMarker(markerOptions)
+    private fun setUserLocationMarker(location: Location) {
+        val latLng = LatLng(location.latitude, location.longitude)
+        if (userLocationMarker == null) {
+            //Create a new marker
+            val markerOptions = MarkerOptions()
+            markerOptions.position(latLng)
+            markerOptions.rotation(location.bearing)
+            markerOptions.anchor(0.5.toFloat(), 0.5.toFloat())
+
+            //Saves Starting Location
+            startingLocation.latitude = location.latitude
+            startingLocation.longitude = location.longitude
+            startingLocationMarker = mMap.addMarker(markerOptions)
+
+            //Makes Destination Pin
+            userLocationMarker = mMap.addMarker(markerOptions)
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 19f))
+        } else {
+
+            //Saves Destination Location
+            destinationLocation.latitude = location.latitude
+            destinationLocation.longitude = location.longitude
+
+
+            //Uses Destination Pin
+            userLocationMarker!!.position = latLng
+            userLocationMarker!!.rotation = location.bearing
+            mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
+        }
     }
 
-    override fun onMarkerClick(p0: Marker) = false
+    @SuppressLint("MissingPermission")
+    private fun startLocationUpdates() {
+        locationRequest?.let {
+            fusedLocationClient.requestLocationUpdates(
+                it,
+                locationCallback,
+                Looper.getMainLooper()
+            )
+        }
+    }
+
+    private fun stopLocationUpdates() {
+        fusedLocationClient.removeLocationUpdates(locationCallback)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            startLocationUpdates()
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        stopLocationUpdates()
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun enableUserLocation() {
+        mMap.isMyLocationEnabled = true
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun zoomToUserLocation() {
+        val locationTask: Task<Location> = fusedLocationClient.lastLocation
+        locationTask.addOnSuccessListener { location ->
+            val latLng = LatLng(location.latitude, location.longitude)
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String?>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == LOCATION_REQUEST_CODE) {
+            if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                enableUserLocation()
+                zoomToUserLocation()
+            }
+        }
+    }
+
 }
