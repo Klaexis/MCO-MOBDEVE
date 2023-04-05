@@ -139,11 +139,11 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayoutCalculator2">
 
         <TextView
-            android:id="@+id/tv_calculator_timeElapsed"
+            android:id="@+id/tv_calculator_timeElapsedMinutes"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:text="Time Elapsed:"
+            android:text="Minutes Elapsed:"
             android:textColor="@color/white"
             android:gravity="left"
             android:textSize="25dp"
@@ -151,11 +151,11 @@
             tools:layout_editor_absoluteY="165dp" />
 
         <EditText
-            android:id="@+id/et_calculator_timeInput"
+            android:id="@+id/et_calculator_timeInputMinutes"
             android:layout_width="180dp"
             android:layout_height="match_parent"
             android:background="#30ffffff"
-            android:inputType="numberSigned"
+            android:inputType="number"
             android:layout_marginLeft="10dp"
             android:gravity="left"
             android:maxLines="1"
@@ -172,12 +172,53 @@
         android:id="@+id/linearLayoutCalculator4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayoutCalculator3">
+
+        <TextView
+            android:id="@+id/tv_calculator_timeElapsedSeconds"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:text="Seconds Elapsed:"
+            android:textColor="@color/white"
+            android:gravity="left"
+            android:textSize="25dp"
+            tools:layout_editor_absoluteX="32dp"
+            tools:layout_editor_absoluteY="165dp" />
+
+        <EditText
+            android:id="@+id/et_calculator_timeInputSeconds"
+            android:layout_width="180dp"
+            android:layout_height="match_parent"
+            android:background="#30ffffff"
+            android:inputType="number"
+            android:layout_marginLeft="10dp"
+            android:gravity="left"
+            android:maxLines="1"
+            android:textSize="30dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            tools:ignore="SpeakableTextPresentCheck"
+            tools:layout_editor_absoluteX="247dp"
+            tools:layout_editor_absoluteY="169dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutCalculator5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCalculator4">
 
         <TextView
             android:id="@+id/tv_calculator_calculateCalories"
@@ -216,6 +257,6 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCalculator4" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCalculator5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

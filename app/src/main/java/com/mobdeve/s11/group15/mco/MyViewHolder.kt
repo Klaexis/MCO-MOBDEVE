@@ -13,7 +13,7 @@ class MyViewHolder(private val viewBinding: ItemListBinding): RecyclerView.ViewH
         //Set viewBinding to item_list.xml and its corresponding views
         viewBinding.itemActivity.text = progress.activityMET
         viewBinding.itemDistance.text = progress.distanceTraveled.toString()
-        viewBinding.itemTime.text = progress.timeElapsed.toString()
+        viewBinding.itemTime.text = progress.timeElapsedMinutes.toString() + " : " + progress.timeElapsedSeconds.toString()
         viewBinding.itemCalBurn.text = progress.caloriesBurned.toString()
         viewBinding.itemDate.text = progress.date
 

@@ -102,10 +102,10 @@ class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback{
             timer.stop()
 
             // Calculation to get Minutes
-            val elpasedMinutes = ((SystemClock.elapsedRealtime() - timer.base) / 1000) / 60
+            val elapsedMinutes = ((SystemClock.elapsedRealtime() - timer.base) / 1000) / 60
 
             // Calculation to get Seconds
-            val elpasedSeconds = (SystemClock.elapsedRealtime() - timer.base) / 1000
+            val elapsedSeconds = (SystemClock.elapsedRealtime() - timer.base) / 1000 % 60
 
             // get selected radio button from radioAction
             var selectedId: Int = radioAction.checkedRadioButtonId
@@ -114,9 +114,10 @@ class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback{
 
             // [THIS IS JUST SAMPLE TO DATA THAT WILL STORE INTO THE DATABASE TO CHECK PROGRESS TRACKER]
             var distanceTraveled: Int = 1000
-            var timeElapsed = elpasedSeconds.toInt()
+            var timeElapsedMinutes = elapsedMinutes.toInt()
+            var timeElapsedSeconds = elapsedSeconds.toInt()
             var caloriesBurned: Float =
-                calculateCalBurn(radioActionButton.text.toString(), getUser.weight, timeElapsed)
+                calculateCalBurn(radioActionButton.text.toString(), getUser.weight, timeElapsedMinutes, timeElapsedSeconds)
             var date: String = dateToday
             var email = getEmail
 
@@ -131,7 +132,8 @@ class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback{
                 Progress(
                     radioActionButton.text.toString(),
                     distanceTraveled,
-                    timeElapsed,
+                    timeElapsedMinutes,
+                    timeElapsedSeconds,
                     caloriesBurned,
                     date,
                     email.toString(),
@@ -149,9 +151,11 @@ class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback{
         }
     }
 
-    private fun calculateCalBurn(Activity: String, weight: Int, time: Int): Float {
+    private fun calculateCalBurn(Activity: String, weight: Int, minutes: Int, seconds : Int): Float {
         var totalCalBurn: Float
         var MET: Float = 0f
+
+        var time : Float = minutes.toFloat() +  (seconds.toFloat() / 60)
         if (Activity == "Walking") {
             MET = 3.5F
         } else if (Activity == "Jogging") {

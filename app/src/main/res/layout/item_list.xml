@@ -100,7 +100,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:text="Time Elapsed (Minutes): "
+            android:text="Time Elapsed: "
             android:textColor="@color/black"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="48dp" />
@@ -112,12 +112,11 @@
             android:clickable="true"
             android:focusable="true"
             android:gravity="right"
-            android:text="100 minutes"
+            android:text="100:"
             android:textColor="@color/black"
             tools:ignore="TouchTargetSizeCheck"
             tools:layout_editor_absoluteX="208dp"
             tools:layout_editor_absoluteY="103dp" />
-
 
     </LinearLayout>
 
@@ -137,7 +136,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:text="Calories Burned (Per Minute): "
+            android:text="Calories Burned: "
             android:textColor="@color/black"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="75dp" />

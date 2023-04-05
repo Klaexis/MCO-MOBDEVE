@@ -40,7 +40,8 @@ class ProgressDbHelper(context: Context?) :
         val values = ContentValues()
         values.put(DbReferences.COLUMN_NAME_ACTIVITY_MET, progress.activityMET)
         values.put(DbReferences.COLUMN_NAME_DISTANCE_TRAVELED, progress.distanceTraveled)
-        values.put(DbReferences.COLUMN_NAME_TIME_ELAPSED, progress.timeElapsed)
+        values.put(DbReferences.COLUMN_NAME_TIME_ELAPSED_MINUTES, progress.timeElapsedMinutes)
+        values.put(DbReferences.COLUMN_NAME_TIME_ELAPSED_SECONDS, progress.timeElapsedSeconds)
         values.put(DbReferences.COLUMN_NAME_CALORIES_BURNED, progress.caloriesBurned)
         values.put(DbReferences.COLUMN_NAME_DATE, progress.date)
         values.put(DbReferences.COLUMN_NAME_EMAIL, progress.email)
@@ -73,7 +74,7 @@ class ProgressDbHelper(context: Context?) :
         // Query to get progress record according to the user's email
         val c : Cursor = database.query(
             DbReferences.TABLE_NAME,
-            arrayOf("activity_met", "distance_traveled", "time_elapsed", "calories_burned", "date", "email", "id"),
+            arrayOf("activity_met", "distance_traveled", "time_elapsed_minutes", "time_elapsed_seconds", "calories_burned", "date", "email", "id"),
             whereClause,
             whereArgs,
             null,
@@ -89,7 +90,8 @@ class ProgressDbHelper(context: Context?) :
             contacts.add(Progress(
                 c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_ACTIVITY_MET)),
                 c.getInt(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_DISTANCE_TRAVELED)),
-                c.getInt(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_TIME_ELAPSED)),
+                c.getInt(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_TIME_ELAPSED_MINUTES)),
+                c.getInt(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_TIME_ELAPSED_SECONDS)),
                 c.getFloat(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_CALORIES_BURNED)),
                 c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_DATE)),
                 c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_EMAIL)),
@@ -111,7 +113,8 @@ class ProgressDbHelper(context: Context?) :
         const val _ID = "id"
         const val COLUMN_NAME_ACTIVITY_MET = "activity_met"
         const val COLUMN_NAME_DISTANCE_TRAVELED = "distance_traveled"
-        const val COLUMN_NAME_TIME_ELAPSED = "time_elapsed"
+        const val COLUMN_NAME_TIME_ELAPSED_MINUTES = "time_elapsed_minutes"
+        const val COLUMN_NAME_TIME_ELAPSED_SECONDS = "time_elapsed_seconds"
         const val COLUMN_NAME_CALORIES_BURNED = "calories_burned"
         const val COLUMN_NAME_DATE = "date"
         const val COLUMN_NAME_EMAIL = "email"
@@ -121,7 +124,8 @@ class ProgressDbHelper(context: Context?) :
                     _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COLUMN_NAME_ACTIVITY_MET + " TEXT, " +
                     COLUMN_NAME_DISTANCE_TRAVELED + " TEXT, " +
-                    COLUMN_NAME_TIME_ELAPSED + " TEXT, " +
+                    COLUMN_NAME_TIME_ELAPSED_MINUTES + " TEXT, " +
+                    COLUMN_NAME_TIME_ELAPSED_SECONDS + " TEXT, " +
                     COLUMN_NAME_CALORIES_BURNED + " TEXT, " +
                     COLUMN_NAME_DATE + " TEXT, " +
                     COLUMN_NAME_EMAIL + " TEXT)"

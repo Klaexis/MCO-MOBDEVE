@@ -7,7 +7,9 @@ class Progress{
         private set
     var distanceTraveled: Int
         private set
-    var timeElapsed: Int
+    var timeElapsedMinutes: Int
+        private set
+    var timeElapsedSeconds: Int
         private set
     var caloriesBurned: Float
         private set
@@ -20,14 +22,16 @@ class Progress{
 
     constructor(activityMET: String,
                 distanceTraveled: Int,
-                timeElapsed: Int,
+                timeElapsedMinutes: Int,
+                timeElapsedSeconds : Int,
                 caloriesBurned: Float,
                 date: String,
                 email: String,
                 id : Long){
         this.activityMET = activityMET
         this.distanceTraveled = distanceTraveled
-        this.timeElapsed = timeElapsed
+        this.timeElapsedMinutes = timeElapsedMinutes
+        this.timeElapsedSeconds = timeElapsedSeconds
         this.caloriesBurned = caloriesBurned
         this.date = date
         this.email = email
