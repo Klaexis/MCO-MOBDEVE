@@ -2,10 +2,12 @@ package com.mobdeve.s11.group15.mco
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.location.Location
+import android.location.LocationManager
 import android.os.*
 import android.widget.Chronometer
 import android.widget.RadioButton
@@ -51,6 +53,9 @@ class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback{
     private lateinit var destinationLocation: Location
     var userLocationMarker: Marker? = null
 
+    private lateinit var locationManager: LocationManager
+
+    //Stopwatch
     private lateinit var timer: Chronometer
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -73,6 +78,8 @@ class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback{
 
         startingLocation = Location("dummy")
         destinationLocation = Location("dummy")
+
+        locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
@@ -107,13 +114,26 @@ class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback{
             // Calculation to get Seconds
             val elapsedSeconds = (SystemClock.elapsedRealtime() - timer.base) / 1000 % 60
 
+            // Calculation to get Distance
+            var theta = startingLocation.longitude - destinationLocation.longitude
+            var distance = (Math.sin(startingLocation.latitude * Math.PI / 180.0)
+                    * Math.sin(destinationLocation.latitude * Math.PI / 180.0)
+                    + Math.cos(startingLocation.latitude * Math.PI / 180.0)
+                    * Math.cos(destinationLocation.latitude * Math.PI / 180.0)
+                    * Math.cos(theta * Math.PI / 180.0))
+            distance = Math.acos(distance)
+            distance = (distance * 180.0 / Math.PI) * 60 * 1.1515 //Miles
+
+            distance = distance * 1609.344 //Meters
+
+
             // get selected radio button from radioAction
             var selectedId: Int = radioAction.checkedRadioButtonId
             // find the radiobutton by returned id
             var radioActionButton = findViewById<RadioButton>(selectedId)
 
             // [THIS IS JUST SAMPLE TO DATA THAT WILL STORE INTO THE DATABASE TO CHECK PROGRESS TRACKER]
-            var distanceTraveled: Int = 1000
+            var distanceTraveled =  distance.toInt()
             var timeElapsedMinutes = elapsedMinutes.toInt()
             var timeElapsedSeconds = elapsedSeconds.toInt()
             var caloriesBurned: Float =
@@ -170,6 +190,7 @@ class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback{
         mMap = googleMap
         mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
         mMap.uiSettings.isZoomControlsEnabled = true
+
         if (ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -212,9 +233,13 @@ class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback{
         if (userLocationMarker == null) {
             //Create a new marker
             val markerOptions = MarkerOptions()
+            val markerOptionsDesitination = MarkerOptions()
             markerOptions.position(latLng)
             markerOptions.rotation(location.bearing)
             markerOptions.anchor(0.5.toFloat(), 0.5.toFloat())
+
+            markerOptionsDesitination.position(latLng)
+            markerOptionsDesitination.icon(BitmapDescriptorFactory.fromResource(R.drawable.vector))
 
             //Saves Starting Location
             startingLocation.latitude = location.latitude
@@ -222,7 +247,7 @@ class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback{
             startingLocationMarker = mMap.addMarker(markerOptions)
 
             //Makes Destination Pin
-            userLocationMarker = mMap.addMarker(markerOptions)
+            userLocationMarker = mMap.addMarker(markerOptionsDesitination)
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 19f))
         } else {
 
