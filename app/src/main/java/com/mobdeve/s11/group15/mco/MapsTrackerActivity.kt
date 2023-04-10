@@ -40,6 +40,7 @@ class MapsTrackerActivity : FragmentActivity(), OnMapReadyCallback {
     //Maps
     private lateinit var mMap: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+    // Variables for DatabaseHelpers
     private lateinit var userDbHelper: UserDbHelper
     private lateinit var progressDbHelper: ProgressDbHelper
     companion object {
@@ -126,8 +127,8 @@ class MapsTrackerActivity : FragmentActivity(), OnMapReadyCallback {
             distance = Math.acos(distance)
             distance = (distance * 180.0 / Math.PI) * 60 * 1.1515 //Miles
 
-            distance = distance * 1609.344 //Meters
-            
+            distance *= 1609.344 //Meters
+
             // get selected radio button from radioAction
             var selectedId: Int = radioAction.checkedRadioButtonId
             // find the radiobutton by returned id
