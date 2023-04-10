@@ -13,7 +13,6 @@ import android.widget.Chronometer
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
