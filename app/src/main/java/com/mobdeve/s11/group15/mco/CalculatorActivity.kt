@@ -6,6 +6,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.mobdeve.s11.group15.mco.Database.UserDbHelper
 import com.mobdeve.s11.group15.mco.databinding.ActivityCalculatorBinding
+import kotlin.math.roundToInt
 
 
 class CalculatorActivity : AppCompatActivity() {
@@ -19,20 +20,21 @@ class CalculatorActivity : AppCompatActivity() {
     }
 
     //Function for calculating the total calories burned
-    private fun calculateCalBurn(Activity: String, weight: Int, minutes : Int, seconds : Int): Float{
+    private fun calculateCalBurn(Activity: String, weight: Int, minutes: Int, seconds: Int): Float {
         var totalCalBurn: Float
         var MET: Float = 0f
 
-        var time : Float = minutes.toFloat() +  (seconds.toFloat() / 60)
+        var time: Float = minutes.toFloat() + (seconds.toFloat() / 60)
 
-        if(Activity == "Walking"){
+        if (Activity == "Walking") {
             MET = 3.5F
-        } else if(Activity == "Jogging"){
+        } else if (Activity == "Jogging") {
             MET = 7.0F
         }
 
         totalCalBurn = (time * (MET * 3.5 * weight) / 200).toFloat()
-        return totalCalBurn
+
+        return (totalCalBurn * 100f).roundToInt() / 100f
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

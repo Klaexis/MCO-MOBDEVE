@@ -29,6 +29,7 @@ import com.mobdeve.s11.group15.mco.Database.UserDbHelper
 import com.mobdeve.s11.group15.mco.databinding.ActivityGooglemapsBinding
 import java.time.LocalDate
 import java.util.*
+import kotlin.math.roundToInt
 
 
 class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback{
@@ -171,11 +172,11 @@ class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback{
         }
     }
 
-    private fun calculateCalBurn(Activity: String, weight: Int, minutes: Int, seconds : Int): Float {
+    private fun calculateCalBurn(Activity: String, weight: Int, minutes: Int, seconds: Int): Float {
         var totalCalBurn: Float
         var MET: Float = 0f
 
-        var time : Float = minutes.toFloat() +  (seconds.toFloat() / 60)
+        var time: Float = minutes.toFloat() + (seconds.toFloat() / 60)
         if (Activity == "Walking") {
             MET = 3.5F
         } else if (Activity == "Jogging") {
@@ -183,7 +184,8 @@ class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback{
         }
 
         totalCalBurn = (time * (MET * 3.5 * weight) / 200).toFloat()
-        return totalCalBurn
+
+        return (totalCalBurn * 100f).roundToInt() / 100f
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
