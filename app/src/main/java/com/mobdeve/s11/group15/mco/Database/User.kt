@@ -1,4 +1,4 @@
-package com.mobdeve.s11.group15.mco.database
+package com.mobdeve.s11.group15.mco.Database
 
 class User{
     var firstName: String

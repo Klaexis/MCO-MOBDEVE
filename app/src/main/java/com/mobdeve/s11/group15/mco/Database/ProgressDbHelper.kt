@@ -1,4 +1,4 @@
-package com.mobdeve.s11.group15.mco.database
+package com.mobdeve.s11.group15.mco.Database
 
 import android.content.ContentValues
 import android.content.Context

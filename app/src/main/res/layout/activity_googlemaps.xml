@@ -8,7 +8,7 @@
     android:paddingStart="8dp"
     android:paddingTop="8dp"
     android:paddingEnd="8dp"
-    tools:context=".controller.LoginActivity">
+    tools:context=".LoginActivity">
 
 
     <Chronometer
@@ -35,7 +35,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         map:layout_constraintTop_toBottomOf="@id/timerTextView"
-        tools:context=".controller.MapsTrackerActivity" />
+        tools:context=".MapsTrackerActivity" />
 
     <LinearLayout
         android:id="@+id/linearLayoutGoogleMaps"
