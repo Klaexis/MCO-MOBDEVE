@@ -9,7 +9,7 @@ import com.mobdeve.s11.group15.mco.databinding.ActivityProgressBinding
 
 class ProgressTrackerActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
-    private lateinit var myAdapter: MyAdapter
+    private lateinit var progressAdapter: ProgressAdapter
     private lateinit var progressDbHelper: ProgressDbHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,8 +26,8 @@ class ProgressTrackerActivity : AppCompatActivity() {
         //Set the recyclerView and myAdapter
         this.recyclerView = viewBinding.recyclerView
         progressDbHelper = ProgressDbHelper.getInstance(this@ProgressTrackerActivity)!! // Initialize ProgressDbHelper
-        this.myAdapter = MyAdapter(progressDbHelper.getAllProgress(getEmail.toString())) // Set the recyclerView to all progress
-        this.recyclerView.adapter = myAdapter
+        this.progressAdapter = ProgressAdapter(progressDbHelper.getAllProgress(getEmail.toString())) // Set the recyclerView to all progress
+        this.recyclerView.adapter = progressAdapter
         this.recyclerView.layoutManager = LinearLayoutManager(this)
     }
 }

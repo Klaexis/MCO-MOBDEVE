@@ -2,15 +2,10 @@ package com.mobdeve.s11.group15.mco.controller
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-<<<<<<<< HEAD:app/src/main/java/com/mobdeve/s11/group15/mco/controller/ProgressViewHolder.kt
 import com.mobdeve.s11.group15.mco.database.Progress
-========
-import com.mobdeve.s11.group15.mco.Database.Progress
-import com.mobdeve.s11.group15.mco.Database.ProgressDbHelper
->>>>>>>> parent of 7d25dc6 (Cleaned up some code):app/src/main/java/com/mobdeve/s11/group15/mco/MyViewHolder.kt
 import com.mobdeve.s11.group15.mco.databinding.ItemListBinding
 
-class MyViewHolder(private val viewBinding: ItemListBinding): RecyclerView.ViewHolder(viewBinding.root) {
+class ProgressViewHolder(private val viewBinding: ItemListBinding): RecyclerView.ViewHolder(viewBinding.root) {
     var email = ""
     var id = 0L
     fun bindData(progress: Progress){
