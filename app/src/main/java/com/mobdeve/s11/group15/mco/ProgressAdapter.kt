@@ -1,11 +1,11 @@
-package com.mobdeve.s11.group15.mco.controller
+package com.mobdeve.s11.group15.mco
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.mobdeve.s11.group15.mco.database.Progress
-import com.mobdeve.s11.group15.mco.database.ProgressDbHelper
+import com.mobdeve.s11.group15.mco.Database.Progress
+import com.mobdeve.s11.group15.mco.Database.ProgressDbHelper
 import com.mobdeve.s11.group15.mco.databinding.ItemListBinding
 
 

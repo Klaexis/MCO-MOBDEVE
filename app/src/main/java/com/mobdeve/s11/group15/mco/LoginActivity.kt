@@ -1,4 +1,4 @@
-package com.mobdeve.s11.group15.mco.controller
+package com.mobdeve.s11.group15.mco
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,8 +8,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.mobdeve.s11.group15.mco.database.UserDbHelper
-import com.mobdeve.s11.group15.mco.R
+import com.mobdeve.s11.group15.mco.Database.UserDbHelper
 import com.mobdeve.s11.group15.mco.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity(){

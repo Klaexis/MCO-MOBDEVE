@@ -1,4 +1,4 @@
-package com.mobdeve.s11.group15.mco.controller
+package com.mobdeve.s11.group15.mco
 
 import android.app.Service
 import android.content.Intent

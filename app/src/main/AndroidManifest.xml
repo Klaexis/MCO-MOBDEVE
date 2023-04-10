@@ -20,7 +20,7 @@
             android:value="AIzaSyCSsrGbZTCAFQKMdPoqPpiwO7Qg-bkIFfo" />
 
         <activity
-            android:name=".controller.LoginActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,23 +29,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".controller.CalculatorActivity"
+            android:name=".CalculatorActivity"
             android:exported="false">
         </activity>
         <activity
-            android:name=".controller.SignUpActivity"
+            android:name=".SignUpActivity"
             android:exported="false">
         </activity>
         <activity
-            android:name=".controller.ProfileActivity"
+            android:name=".ProfileActivity"
             android:exported="false">
         </activity>
         <activity
-            android:name=".controller.ProgressTrackerActivity"
+            android:name=".ProgressTrackerActivity"
             android:exported="false">
         </activity>
         <activity
-            android:name=".controller.MapsTrackerActivity"
+            android:name=".MapsTrackerActivity"
             android:exported="false">
         </activity>
 
