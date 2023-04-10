@@ -126,6 +126,15 @@ class MapsTrackerActivity : FragmentActivity(), OnMapReadyCallback {
             distance = Math.acos(distance)
             distance = (distance * 180.0 / Math.PI) * 60 * 1.1515 //Miles
 
+            var results = FloatArray(1)
+            Location.distanceBetween(
+                startingLocation.latitude,
+                startingLocation.longitude,
+                destinationLocation.latitude,
+                destinationLocation.longitude,
+                results
+            )
+
             distance = distance * 1609.344 //Meters
 
 
@@ -134,8 +143,9 @@ class MapsTrackerActivity : FragmentActivity(), OnMapReadyCallback {
             // find the radiobutton by returned id
             var radioActionButton = findViewById<RadioButton>(selectedId)
 
-            // [THIS IS JUST SAMPLE TO DATA THAT WILL STORE INTO THE DATABASE TO CHECK PROGRESS TRACKER]
-            var distanceTraveled =  distance.toInt()
+            // Progress value
+            var distanceTraveled =  results[0].toInt()
+            //var distanceTraveled =  distance.toInt()
             var timeElapsedMinutes = elapsedMinutes.toInt()
             var timeElapsedSeconds = elapsedSeconds.toInt()
             var caloriesBurned: Float =
