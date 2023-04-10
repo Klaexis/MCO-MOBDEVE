@@ -10,7 +10,7 @@
     android:paddingEnd="8dp"
     tools:context=".LoginActivity">
 
-    
+
     <Chronometer
         android:id="@+id/timerTextView"
         android:layout_width="match_parent"
