@@ -1,7 +1,5 @@
 package com.mobdeve.s11.group15.mco.Database
 
-import java.util.*
-
 class Progress{
     var activityMET: String
         private set

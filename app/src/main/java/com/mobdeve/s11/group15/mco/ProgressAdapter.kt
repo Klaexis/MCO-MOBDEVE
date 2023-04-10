@@ -1,6 +1,5 @@
 package com.mobdeve.s11.group15.mco
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -10,19 +9,19 @@ import com.mobdeve.s11.group15.mco.Database.ProgressDbHelper
 import com.mobdeve.s11.group15.mco.databinding.ItemListBinding
 
 
-class MyAdapter(private val data: ArrayList<Progress>) : RecyclerView.Adapter<MyViewHolder>() {
+class ProgressAdapter(private val data: ArrayList<Progress>) : RecyclerView.Adapter<ProgressViewHolder>() {
     private lateinit var progressDbHelper: ProgressDbHelper
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProgressViewHolder {
         // This is a way to perform View Binding in the RecyclerView.
         val itemListBinding: ItemListBinding = ItemListBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false)
 
-        return MyViewHolder(itemListBinding)
+        return ProgressViewHolder(itemListBinding)
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ProgressViewHolder, position: Int) {
         holder.bindData(data[position])
 
         holder.setDeleteOnClickListener{ //Delete button in recycler view
