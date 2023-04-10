@@ -16,6 +16,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentActivity
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -32,7 +33,7 @@ import java.util.*
 import kotlin.math.roundToInt
 
 
-class MapsTrackerActivity : AppCompatActivity(), OnMapReadyCallback{
+class MapsTrackerActivity : FragmentActivity(), OnMapReadyCallback {
 
     private lateinit var viewBinding: ActivityGooglemapsBinding
 
