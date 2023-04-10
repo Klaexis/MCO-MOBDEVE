@@ -1,4 +1,4 @@
-package com.mobdeve.s11.group15.mco
+package com.mobdeve.s11.group15.mco.controller
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -13,7 +13,6 @@ import android.widget.Chronometer
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
@@ -24,9 +23,10 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.google.android.gms.tasks.Task
-import com.mobdeve.s11.group15.mco.Database.Progress
-import com.mobdeve.s11.group15.mco.Database.ProgressDbHelper
-import com.mobdeve.s11.group15.mco.Database.UserDbHelper
+import com.mobdeve.s11.group15.mco.database.Progress
+import com.mobdeve.s11.group15.mco.database.ProgressDbHelper
+import com.mobdeve.s11.group15.mco.database.UserDbHelper
+import com.mobdeve.s11.group15.mco.R
 import com.mobdeve.s11.group15.mco.databinding.ActivityGooglemapsBinding
 import java.time.LocalDate
 import java.util.*

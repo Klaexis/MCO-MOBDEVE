@@ -1,10 +1,11 @@
-package com.mobdeve.s11.group15.mco
+package com.mobdeve.s11.group15.mco.controller
 
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.mobdeve.s11.group15.mco.Database.UserDbHelper
+import com.mobdeve.s11.group15.mco.database.UserDbHelper
+import com.mobdeve.s11.group15.mco.R
 import com.mobdeve.s11.group15.mco.databinding.ActivityCalculatorBinding
 import kotlin.math.roundToInt
 

@@ -1,8 +1,8 @@
-package com.mobdeve.s11.group15.mco
+package com.mobdeve.s11.group15.mco.controller
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.mobdeve.s11.group15.mco.Database.Progress
+import com.mobdeve.s11.group15.mco.database.Progress
 import com.mobdeve.s11.group15.mco.databinding.ItemListBinding
 
 class ProgressViewHolder(private val viewBinding: ItemListBinding): RecyclerView.ViewHolder(viewBinding.root) {
