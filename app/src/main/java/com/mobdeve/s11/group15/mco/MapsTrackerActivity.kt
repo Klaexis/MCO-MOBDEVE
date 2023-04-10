@@ -33,9 +33,6 @@ import kotlin.math.roundToInt
 
 
 class MapsTrackerActivity : FragmentActivity(), OnMapReadyCallback {
-
-    private lateinit var viewBinding: ActivityGooglemapsBinding
-
     //Maps
     private lateinit var mMap: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -65,7 +62,7 @@ class MapsTrackerActivity : FragmentActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
 
         //Set viewBinding to activity_googlemaps.xml
-        viewBinding = ActivityGooglemapsBinding.inflate(layoutInflater)
+        val viewBinding: ActivityGooglemapsBinding = ActivityGooglemapsBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
         timer = viewBinding.timerTextView
