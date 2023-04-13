@@ -1,4 +1,4 @@
-package com.mobdeve.s11.group15.mco
+package com.mobdeve.s11.group15.mco.Activity
 
 enum class IntentKeys {
     //Set of KEYs for String name of the values that are about to be sent
