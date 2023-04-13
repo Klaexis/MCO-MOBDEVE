@@ -31,8 +31,8 @@ The application **WalkieCalorie** is a fitness measurement app. Users are capabl
   - The user will be able to calculate their estimated calories burned through a formula that will be used: [Minutes * (METS X 3.5 X Body Weight (KG)) / 200]. This requires the users to input the estimated time of the activity, the activity the user will be doing (This is for the METS value in which Walking = 3.5 METS, Jogging = 7.0 METS), and the current body weight of the user. <br>
 
 ## Contents of MOBDEVE MP
-- [`Activity`](/Activity) contains all the Activity.kt files.
-- [`Database`](/Database) contains the DatabaseHelper and the model schema of each database.
-- [`Adapter`](/Adapter) contains the Adapter and ViewHolder .kt files. 
-- [`Layout`](/layout) contains all the .xml files for the Views.
-- [`Drawable`](/drawable) contains all the vector and image assets.
+- [`Activity`](app/src/main/java/com/mobdeve/s11/group15/mco/Activity) contains all the Activity.kt files.
+- [`Database`](app/src/main/java/com/mobdeve/s11/group15/mco/Database) contains the DatabaseHelper and the model schema of each database.
+- [`Adapter`](app/src/main/java/com/mobdeve/s11/group15/mco/Adapter) contains the Adapter and ViewHolder .kt files. 
+- [`Layout`](app/src/main/res//layout) contains all the .xml files for the Views.
+- [`Drawable`](app/src/main/res//drawable) contains all the vector and image assets.
