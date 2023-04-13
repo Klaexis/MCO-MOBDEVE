@@ -34,5 +34,5 @@ The application **WalkieCalorie** is a fitness measurement app. Users are capabl
 - [`Activity`](app/src/main/java/com/mobdeve/s11/group15/mco/Activity) contains all the Activity.kt files.
 - [`Database`](app/src/main/java/com/mobdeve/s11/group15/mco/Database) contains the DatabaseHelper and the model schema of each database.
 - [`Adapter`](app/src/main/java/com/mobdeve/s11/group15/mco/Adapter) contains the Adapter and ViewHolder .kt files. 
-- [`Layout`](app/src/main/res//layout) contains all the .xml files for the Views.
-- [`Drawable`](app/src/main/res//drawable) contains all the vector and image assets.
+- [`Layout`](app/src/main/res/layout) contains all the .xml files for the Views.
+- [`Drawable`](app/src/main/res/drawable) contains all the vector and image assets.
