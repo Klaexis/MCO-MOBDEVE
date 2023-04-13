@@ -16,7 +16,7 @@
         android:id="@+id/linearLayoutItemList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +88,7 @@
         android:id="@+id/linearLayoutItemList3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:gravity="center"
         android:weightSum="3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -112,7 +112,7 @@
             android:clickable="true"
             android:focusable="true"
             android:gravity="right"
-            android:text="100:"
+            android:text="1:00"
             android:textColor="@color/black"
             tools:ignore="TouchTargetSizeCheck"
             tools:layout_editor_absoluteX="208dp"
@@ -124,7 +124,7 @@
         android:id="@+id/linearLayoutItemList4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:gravity="center"
         android:weightSum="3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -160,7 +160,7 @@
         android:id="@+id/linearLayoutItemList5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:gravity="center"
         android:weightSum="3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -192,6 +192,42 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linearLayoutItemList6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:weightSum="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutItemList5">
+
+        <TextView
+            android:id="@+id/tv_progress_timeStarted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="Time Started: "
+            android:textColor="@color/black"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="75dp" />
+
+        <TextView
+            android:id="@+id/itemTimeStarted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="right"
+            android:text="12:00 A.M."
+            android:textColor="@color/black"
+            tools:ignore="TouchTargetSizeCheck"
+            tools:layout_editor_absoluteX="208dp"
+            tools:layout_editor_absoluteY="103dp" />
+
+    </LinearLayout>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/deleteBtn"
         android:layout_width="wrap_content"
@@ -203,7 +239,7 @@
         app:layout_constraintBottom_toTopOf="@+id/line_list2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutItemList5" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutItemList6" />
 
     <View
         android:id="@+id/line_list2"

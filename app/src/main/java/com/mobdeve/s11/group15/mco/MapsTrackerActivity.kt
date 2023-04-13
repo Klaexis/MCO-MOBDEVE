@@ -137,6 +137,7 @@ class MapsTrackerActivity : FragmentActivity(), OnMapReadyCallback {
             var caloriesBurned: Float =
                 calculateCalBurn(radioActionButton.text.toString(), getUser.weight, timeElapsedMinutes, timeElapsedSeconds)
             var date: String = dateToday
+            var timeStarted : String = "12:00 A.M."
             var email = getEmail
 
             //When STOP button is clicked send values to ProgressTrackerActivity.kt
@@ -154,6 +155,7 @@ class MapsTrackerActivity : FragmentActivity(), OnMapReadyCallback {
                     timeElapsedSeconds,
                     caloriesBurned,
                     date,
+                    timeStarted,
                     email.toString(),
                     0
                 )

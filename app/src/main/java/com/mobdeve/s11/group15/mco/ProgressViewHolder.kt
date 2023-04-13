@@ -15,6 +15,7 @@ class ProgressViewHolder(private val viewBinding: ItemListBinding): RecyclerView
         viewBinding.itemTime.text = progress.timeElapsedMinutes.toString() + " : " + progress.timeElapsedSeconds.toString()
         viewBinding.itemCalBurn.text = progress.caloriesBurned.toString()
         viewBinding.itemDate.text = progress.date
+        viewBinding.itemTimeStarted.text = progress.timeStarted
 
         // Store the email and id to the item record upon created
         email = progress.email
