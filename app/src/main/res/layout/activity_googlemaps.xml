@@ -3,19 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@drawable/bg5"
     android:paddingStart="8dp"
     android:paddingTop="8dp"
     android:paddingEnd="8dp"
     tools:context=".Activity.LoginActivity">
 
-
     <Chronometer
         android:id="@+id/timerTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="00:00:00"
         android:textAlignment="center"
@@ -27,80 +26,82 @@
 
 
     <fragment
-        xmlns:map="http://schemas.android.com/apk/res-auto"
         android:id="@+id/map"
         class="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="fill_parent"
-        android:layout_height="400dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayoutGoogleMaps"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        map:layout_constraintTop_toBottomOf="@id/timerTextView"
-        tools:context=".Activity.MapsTrackerActivity" />
+        app:layout_constraintTop_toBottomOf="@+id/timerTextView"
+        tools:context=".Activity.MapsTrackerActivity"
+        tools:layout="@android:layout/simple_gallery_item" />
 
     <LinearLayout
         android:id="@+id/linearLayoutGoogleMaps"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayoutGoogleMaps2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/map">
+        app:layout_constraintStart_toStartOf="parent">
 
-    <RadioGroup
-        android:id="@+id/radioActivityMaps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <RadioButton
-            android:id="@+id/radioWalkingMaps"
+        <RadioGroup
+            android:id="@+id/radioActivityMaps"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/white"
-            android:checked="true"
-            android:gravity="right"
-            android:text="@string/radio_walking"
-            android:textColor="@color/white"
-            tools:layout_editor_absoluteX="181dp"
-            tools:layout_editor_absoluteY="171dp" />
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent">
 
-        <RadioButton
-            android:id="@+id/radioJoggingMaps"
-            android:layout_width="wrap_content"
-            android:gravity="right"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/white"
-            android:text="@string/radio_jogging"
-            android:textColor="@color/white"
-            tools:layout_editor_absoluteX="181dp"
-            tools:layout_editor_absoluteY="219dp" />
+            <RadioButton
+                android:id="@+id/radioWalkingMaps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/black"
+                android:checked="true"
+                android:gravity="right"
+                android:text="@string/radio_walking"
+                android:textColor="@color/black"
+                tools:layout_editor_absoluteX="181dp"
+                tools:layout_editor_absoluteY="171dp" />
 
-    </RadioGroup>
+            <RadioButton
+                android:id="@+id/radioJoggingMaps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/black"
+                android:gravity="right"
+                android:text="@string/radio_jogging"
+                android:textColor="@color/black"
+                tools:layout_editor_absoluteX="181dp"
+                tools:layout_editor_absoluteY="219dp" />
+
+        </RadioGroup>
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
+        android:id="@+id/linearLayoutGoogleMaps2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutGoogleMaps"
-        tools:layout_editor_absoluteX="8dp">
+        app:layout_constraintHorizontal_bias="0.99"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/stopBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:text="Stop"
-        android:textColor="@color/black"
-        app:layout_constraintVertical_bias="0.0" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/stopBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:text="Stop"
+            android:textColor="@color/white"
+            app:layout_constraintVertical_bias="0.0" />
 
     </LinearLayout>
 
