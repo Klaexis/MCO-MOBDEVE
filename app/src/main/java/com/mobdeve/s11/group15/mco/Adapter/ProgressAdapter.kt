@@ -1,4 +1,4 @@
-package com.mobdeve.s11.group15.mco
+package com.mobdeve.s11.group15.mco.Adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

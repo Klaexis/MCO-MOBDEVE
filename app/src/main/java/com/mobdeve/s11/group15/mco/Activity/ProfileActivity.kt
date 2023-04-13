@@ -1,4 +1,4 @@
-package com.mobdeve.s11.group15.mco
+package com.mobdeve.s11.group15.mco.Activity
 
 import android.app.Activity
 import android.content.Intent
@@ -9,6 +9,8 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.mobdeve.s11.group15.mco.Database.UserDbHelper
+import com.mobdeve.s11.group15.mco.IntentKeys
+import com.mobdeve.s11.group15.mco.R
 import com.mobdeve.s11.group15.mco.databinding.ActivityProfileBinding
 
 

@@ -1,11 +1,10 @@
-package com.mobdeve.s11.group15.mco
+package com.mobdeve.s11.group15.mco.Activity
 
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.icu.text.SimpleDateFormat
 import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
@@ -27,6 +26,8 @@ import com.google.android.gms.tasks.Task
 import com.mobdeve.s11.group15.mco.Database.Progress
 import com.mobdeve.s11.group15.mco.Database.ProgressDbHelper
 import com.mobdeve.s11.group15.mco.Database.UserDbHelper
+import com.mobdeve.s11.group15.mco.IntentKeys
+import com.mobdeve.s11.group15.mco.R
 import com.mobdeve.s11.group15.mco.databinding.ActivityGooglemapsBinding
 import java.time.LocalDate
 import java.util.*

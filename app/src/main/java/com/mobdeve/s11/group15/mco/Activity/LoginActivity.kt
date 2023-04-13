@@ -1,4 +1,4 @@
-package com.mobdeve.s11.group15.mco
+package com.mobdeve.s11.group15.mco.Activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.mobdeve.s11.group15.mco.Database.UserDbHelper
+import com.mobdeve.s11.group15.mco.IntentKeys
+import com.mobdeve.s11.group15.mco.R
 import com.mobdeve.s11.group15.mco.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity(){
