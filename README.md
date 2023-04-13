@@ -1,8 +1,7 @@
 # MCO-MOBDEVE | WalkieCalorie 
- Created By: <br>
+ **Created By: <br>
  Aleck Jasper Lim <br>
- Abrience Luigi Liao <br>
-<br>
+ Abrience Luigi Liao** <br>
 
 ## Description
 The application **WalkieCalorie** is a fitness measurement app. Users are capable of registering and creating an account on the app. Once the user has an account he/she is eligible to track progress of how much distance they have walked/jogged, the amount of time they have done the activity, and an estimated counter of how much calories they have burned. The calories burned will be calculated with the formula: [Minutes * (METS X 3.5 X Body Weight (KG)) / 200]. The user can turn on the tracker and it will start tracking how much distance and time the user has traveled which will be used to calculate the amount of calories burned per minute.  A progress tracker will also be placed to check how many calories the user has burned in total and how much distance and time the user has traveled. When the tracker has been stopped then the progress will be then placed inside the progress tracker.
