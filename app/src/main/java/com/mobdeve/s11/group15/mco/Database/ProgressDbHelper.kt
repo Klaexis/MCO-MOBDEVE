@@ -44,6 +44,7 @@ class ProgressDbHelper(context: Context?) :
         values.put(DbReferences.COLUMN_NAME_TIME_ELAPSED_SECONDS, progress.timeElapsedSeconds)
         values.put(DbReferences.COLUMN_NAME_CALORIES_BURNED, progress.caloriesBurned)
         values.put(DbReferences.COLUMN_NAME_DATE, progress.date)
+        values.put(DbReferences.COLUMN_NAME_TIME_STARTED, progress.timeStarted)
         values.put(DbReferences.COLUMN_NAME_EMAIL, progress.email)
 
         // Insert the new row
@@ -74,7 +75,7 @@ class ProgressDbHelper(context: Context?) :
         // Query to get progress record according to the user's email
         val c : Cursor = database.query(
             DbReferences.TABLE_NAME,
-            arrayOf("activity_met", "distance_traveled", "time_elapsed_minutes", "time_elapsed_seconds", "calories_burned", "date", "email", "id"),
+            arrayOf("activity_met", "distance_traveled", "time_elapsed_minutes", "time_elapsed_seconds", "calories_burned", "date", "time_started", "email", "id"),
             whereClause,
             whereArgs,
             null,
@@ -94,6 +95,7 @@ class ProgressDbHelper(context: Context?) :
                 c.getInt(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_TIME_ELAPSED_SECONDS)),
                 c.getFloat(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_CALORIES_BURNED)),
                 c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_DATE)),
+                c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_TIME_STARTED)),
                 c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME_EMAIL)),
                 c.getLong(c.getColumnIndexOrThrow(DbReferences._ID))
             ))
@@ -117,6 +119,7 @@ class ProgressDbHelper(context: Context?) :
         const val COLUMN_NAME_TIME_ELAPSED_SECONDS = "time_elapsed_seconds"
         const val COLUMN_NAME_CALORIES_BURNED = "calories_burned"
         const val COLUMN_NAME_DATE = "date"
+        const val COLUMN_NAME_TIME_STARTED = "time_started"
         const val COLUMN_NAME_EMAIL = "email"
 
         const val CREATE_TABLE_STATEMENT =
@@ -128,6 +131,7 @@ class ProgressDbHelper(context: Context?) :
                     COLUMN_NAME_TIME_ELAPSED_SECONDS + " TEXT, " +
                     COLUMN_NAME_CALORIES_BURNED + " TEXT, " +
                     COLUMN_NAME_DATE + " TEXT, " +
+                    COLUMN_NAME_TIME_STARTED + " TEXT, " +
                     COLUMN_NAME_EMAIL + " TEXT)"
 
         const val DROP_TABLE_STATEMENT = "DROP TABLE IF EXISTS " + TABLE_NAME

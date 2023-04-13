@@ -13,6 +13,8 @@ class Progress{
         private set
     var date: String
         private set
+    var timeStarted: String
+        private set
     var email: String
         private set
     var id: Long = 0
@@ -24,6 +26,7 @@ class Progress{
                 timeElapsedSeconds : Int,
                 caloriesBurned: Float,
                 date: String,
+                timeStarted: String,
                 email: String,
                 id : Long){
         this.activityMET = activityMET
@@ -32,6 +35,7 @@ class Progress{
         this.timeElapsedSeconds = timeElapsedSeconds
         this.caloriesBurned = caloriesBurned
         this.date = date
+        this.timeStarted = timeStarted
         this.email = email
         this.id = id
     }
