@@ -131,6 +131,12 @@ class MapsTrackerActivity : FragmentActivity(), OnMapReadyCallback {
             // find the radiobutton by returned id
             var radioActionButton = findViewById<RadioButton>(selectedId)
 
+            // If destination is not initialized set distance to 0
+            if(destinationLocation.latitude == 0.00 || destinationLocation.longitude == 0.00)
+            {
+                distance = 0.00
+            }
+
             // Progress value
             var distanceTraveled =  distance.toInt()
             var timeElapsedMinutes = elapsedMinutes.toInt()
