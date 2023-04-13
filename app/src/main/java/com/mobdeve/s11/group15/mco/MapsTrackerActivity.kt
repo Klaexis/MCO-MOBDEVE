@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.icu.text.SimpleDateFormat
 import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
@@ -137,8 +138,16 @@ class MapsTrackerActivity : FragmentActivity(), OnMapReadyCallback {
             var caloriesBurned: Float =
                 calculateCalBurn(radioActionButton.text.toString(), getUser.weight, timeElapsedMinutes, timeElapsedSeconds)
             var date: String = dateToday
-            var timeStarted : String = "12:00 A.M."
             var email = getEmail
+
+            val c = Calendar.getInstance()
+
+            val hour = c.get(Calendar.HOUR_OF_DAY).toString()
+            val minute = c.get(Calendar.MINUTE).toString()
+
+            val timeStarted = hour + ":" + minute
+
+            //val  = Calendar.getInstance().time
 
             //When STOP button is clicked send values to ProgressTrackerActivity.kt
             val stopIntent: Intent =
