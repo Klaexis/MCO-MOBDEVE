@@ -251,6 +251,7 @@ class MapsTrackerActivity : FragmentActivity(), OnMapReadyCallback {
 
             markerOptionsDesitination.position(latLng)
             markerOptionsDesitination.icon(BitmapDescriptorFactory.fromResource(R.drawable.vector))
+            markerOptionsDesitination.anchor(0.5.toFloat(), 0.5.toFloat())
 
             //Saves Starting Location
             startingLocation.latitude = location.latitude
@@ -260,6 +261,7 @@ class MapsTrackerActivity : FragmentActivity(), OnMapReadyCallback {
             //Makes Destination Pin
             userLocationMarker = mMap.addMarker(markerOptionsDesitination)
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 19f))
+
         } else {
 
             //Saves Destination Location
