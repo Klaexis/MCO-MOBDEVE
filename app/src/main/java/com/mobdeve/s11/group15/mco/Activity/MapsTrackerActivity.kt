@@ -26,7 +26,6 @@ import com.google.android.gms.tasks.Task
 import com.mobdeve.s11.group15.mco.Database.Progress
 import com.mobdeve.s11.group15.mco.Database.ProgressDbHelper
 import com.mobdeve.s11.group15.mco.Database.UserDbHelper
-import com.mobdeve.s11.group15.mco.Activity.IntentKeys
 import com.mobdeve.s11.group15.mco.R
 import com.mobdeve.s11.group15.mco.databinding.ActivityGooglemapsBinding
 import java.time.LocalDate

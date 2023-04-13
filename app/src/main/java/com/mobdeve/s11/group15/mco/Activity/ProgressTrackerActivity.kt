@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mobdeve.s11.group15.mco.Database.ProgressDbHelper
-import com.mobdeve.s11.group15.mco.Activity.IntentKeys
 import com.mobdeve.s11.group15.mco.Adapter.ProgressAdapter
 import com.mobdeve.s11.group15.mco.databinding.ActivityProgressBinding
 
